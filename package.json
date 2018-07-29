@@ -14,7 +14,8 @@
     "start": "NODE_ENV=development webpack-dev-server --hot --inline",
     "build:js": "babel src -d lib",
     "build:css": "lessc src/index.less lib/index.css",
-    "build": "NODE_ENV=production webpack --hide-modules --progress --colors"
+    "build": "NODE_ENV=production webpack --hide-modules --progress --colors",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -35,11 +36,18 @@
     "antd": "^3.7.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "react": "^16.4.1",

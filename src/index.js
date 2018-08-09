@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'antd'
+import Table from './component/table'
 
 export default class extends Component {
+  static propTypes = {
+    label: PropTypes.string,
+  }
+
+  static defaultProps = {
+    label: 'Button',
+  }
+
   state = {
-    type: 'primary'
+    type: 'primary',
   }
 
   render() {
+    const { label } = this.props
     return (
-      <Button {...this.state}>Button</Button>
+      <div>
+        <Table bordered />
+      </div>
     )
   }
 }

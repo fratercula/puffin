@@ -1,0 +1,42 @@
+{
+  "columns": [
+    {
+      "title": "Full Name",
+      "width": 100,
+      "key": "name"
+    },
+    {
+      "title": "Age",
+      "width": 100,
+      "key": "age"
+    },
+    {
+      "title": "address",
+      "key": "address"
+    }
+  ],
+  "dataSource": [
+    {
+      "name": "Edrward 0",
+      "age": 32,
+      "address": "London Park no. 0"
+    },
+    {
+      "name": "Edrward 1",
+      "age": 32,
+      "address": "London Park no. 1"
+    },
+    {
+      "name": "Edrward 2",
+      "age": 32,
+      "address": "London Park no. 2"
+    },
+    {
+      "name": "Edrward 3",
+      "age": 32,
+      "address": "London Park no. 3"
+    }
+  ],
+  "bordered": true,
+  "pagination": false
+}

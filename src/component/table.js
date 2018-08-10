@@ -1,90 +1,84 @@
 import React, { Component } from 'react'
 import { Table } from 'antd'
 import PropTypes from 'prop-types'
+import fetch from '../helper/fetcher'
 
 export default class extends Component {
   static propTypes = {
+    api: PropTypes.string,
     columns: PropTypes.array,
-    data: PropTypes.array,
-    scroll: PropTypes.object,
-    pagination: PropTypes.object,
-    size: PropTypes.string,
+    dataSource: PropTypes.array,
   }
 
   static defaultProps = {
-    scroll: {},
-    pagination: {},
-    size: 'default',
-    columns: [
-      {
-        title: 'Full Name',
-        width: 100,
-        key: 'name',
-      },
-      {
-        title: 'Age',
-        width: 100,
-        key: 'age',
-      },
-      {
-        title: 'address',
-        key: 'address',
-      },
-    ],
-    data: [
-      {
-        name: 'Edrward 0',
-        age: 32,
-        address: 'London Park no. 0',
-      },
-      {
-        name: 'Edrward 1',
-        age: 32,
-        address: 'London Park no. 1',
-      },
-      {
-        name: 'Edrward 2',
-        age: 32,
-        address: 'London Park no. 2',
-      },
-      {
-        name: 'Edrward 3',
-        age: 32,
-        address: 'London Park no. 3',
-      },
-    ],
+    api: '',
+    columns: [],
+    dataSource: [],
   }
 
   state = {
-    page: 1,
+    columns: [],
+    dataSource: [],
+    pagination: false,
+    loading: false,
+  }
+
+  componentDidMount() {
+    const { api: url } = this.props
+
+    if (url) {
+      this.setState({ loading: true })
+      fetch({ url })
+        .then(res => this.setState({
+          loading: false,
+          ...res,
+        }))
+    }
   }
 
   render() {
     const {
-      columns,
-      data,
-      scroll,
-      pagination,
-      size,
+      api,
+      columns: c,
+      dataSource: d,
     } = this.props
+    const { loading } = this.state
+    let { columns, dataSource } = this.state
+
+    if (!api) {
+      columns = c
+      dataSource = d
+    }
 
     for (let i = 0; i < columns.length; i += 1) {
       columns[i].dataIndex = columns[i].key
     }
 
-    for (let i = 0; i < data.length; i += 1) {
-      data[i].key = i
+    for (let i = 0; i < dataSource.length; i += 1) {
+      dataSource[i].key = i
     }
 
     return (
-      <Table
-        columns={columns}
-        dataSource={data}
-        scroll={scroll}
-        pagination={pagination}
-        size={size}
-        {...this.props}
-      />
+      <div>
+        {
+          api
+            ? (
+              <Table
+                columns={columns}
+                dataSource={dataSource}
+                loading={loading}
+                {...this.state}
+              />
+            )
+            : (
+              <Table
+                columns={columns}
+                dataSource={dataSource}
+                {...this.props}
+              />
+            )
+        }
+      </div>
     )
   }
 }

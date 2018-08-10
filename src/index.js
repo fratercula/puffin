@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Table from './component/table'
 
 export default class extends Component {
-  static propTypes = {
-    label: PropTypes.string,
-  }
-
-  static defaultProps = {
-    label: 'Button',
-  }
-
   state = {
-    type: 'primary',
+    title: 'Puffin',
   }
 
   render() {
-    const { label } = this.props
+    const { title } = this.state
+
     return (
       <div>
-        <Table bordered />
+        <h3>
+          {title}
+        </h3>
+        <Table api="http://127.0.0.1:2333/table.json" />
       </div>
     )
   }

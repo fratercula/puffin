@@ -1,42 +1,64 @@
 {
-  "columns": [
-    {
-      "title": "Full Name",
-      "width": 100,
-      "key": "name"
-    },
-    {
-      "title": "Age",
-      "width": 100,
-      "key": "age"
-    },
-    {
-      "title": "address",
-      "key": "address"
+  "c": 0,
+  "m": "",
+  "d": {
+    "columns": [
+      {
+        "title": "Full Name",
+        "width": 100,
+        "key": "name"
+      },
+      {
+        "title": "Age",
+        "width": 100,
+        "sorter": true,
+        "key": "age"
+      },
+      {
+        "title": "Gender",
+        "key": "gender",
+        "filters": [
+          { "text": "Male", "value": "male" },
+          { "text": "Female", "value": "female" }
+        ]
+      },
+      {
+        "title": "address",
+        "key": "address"
+      }
+    ],
+    "dataSource": [
+      {
+        "name": "Edrward 0",
+        "age": 32,
+        "gender": "male",
+        "address": "London Park no. 0"
+      },
+      {
+        "name": "Edrward 1",
+        "age": 32,
+        "gender": "female",
+        "address": "London Park no. 1"
+      },
+      {
+        "name": "Edrward 2",
+        "age": 32,
+        "gender": "female",
+        "address": "London Park no. 2"
+      },
+      {
+        "name": "Edrward 3",
+        "age": 32,
+        "gender": "female",
+        "address": "London Park no. 3"
+      }
+    ],
+    "bordered": true,
+    "size": "middle",
+    "pagination": {
+      "total": 100,
+      "pageSize": 10,
+      "current": 1
     }
-  ],
-  "dataSource": [
-    {
-      "name": "Edrward 0",
-      "age": 32,
-      "address": "London Park no. 0"
-    },
-    {
-      "name": "Edrward 1",
-      "age": 32,
-      "address": "London Park no. 1"
-    },
-    {
-      "name": "Edrward 2",
-      "age": 32,
-      "address": "London Park no. 2"
-    },
-    {
-      "name": "Edrward 3",
-      "age": 32,
-      "address": "London Park no. 3"
-    }
-  ],
-  "bordered": true,
-  "pagination": false
+  }
 }

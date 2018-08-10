@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table } from 'antd'
+import { Table, Alert } from 'antd'
 import PropTypes from 'prop-types'
 import fetch from '../helper/fetcher'
 
@@ -21,19 +21,53 @@ export default class extends Component {
     dataSource: [],
     pagination: false,
     loading: false,
+    error: '',
   }
 
   componentDidMount() {
     const { api: url } = this.props
 
     if (url) {
-      this.setState({ loading: true })
-      fetch({ url })
-        .then(res => this.setState({
-          loading: false,
-          ...res,
-        }))
+      this.fetch({ url })
     }
+  }
+
+  onChange = ({ current }, filters, { field, order }) => {
+    const { pagination: prev } = this.state
+    const { api: url } = this.props
+    const pagination = { ...prev, current }
+
+    this.setState({ pagination })
+    this.fetch({
+      url,
+      data: {
+        page: current,
+        filters: JSON.stringify(filters),
+        sorter: JSON.stringify({ field, order }),
+      },
+    })
+  }
+
+  fetch = (params) => {
+    this.setState({ loading: true })
+    fetch(params)
+      .then(({ c, m, d }) => {
+        if (c !== 0) {
+          this.setState({
+            error: m || 'Fetch Error',
+            loading: false,
+          })
+          return
+        }
+        this.setState({
+          loading: false,
+          ...d,
+        })
+      })
+      .catch(err => this.setState({
+        error: err.message || 'Fetch Error',
+        loading: false,
+      }))
   }
 
   render() {
@@ -42,7 +76,7 @@ export default class extends Component {
       columns: c,
       dataSource: d,
     } = this.props
-    const { loading } = this.state
+    const { loading, error } = this.state
     let { columns, dataSource } = this.state
 
     if (!api) {
@@ -61,12 +95,16 @@ export default class extends Component {
     return (
       <div>
         {
+          error ? <Alert message={error} type="error" showIcon /> : null
+        }
+        {
           api
             ? (
               <Table
                 columns={columns}
                 dataSource={dataSource}
                 loading={loading}
+                onChange={this.onChange}
                 {...this.state}
               />
             )
@@ -74,6 +112,7 @@ export default class extends Component {
               <Table
                 columns={columns}
                 dataSource={dataSource}
+                onChange={this.onChange}
                 {...this.props}
               />
             )

@@ -12,7 +12,7 @@ export default class extends Component {
     header: PropTypes.object,
     collapsible: PropTypes.bool,
     style: PropTypes.object,
-    box: PropTypes.object,
+    body: PropTypes.object,
   }
 
   static defaultProps = {
@@ -21,7 +21,7 @@ export default class extends Component {
       icon: '#666',
       style: {},
     },
-    box: {
+    body: {
       cells: [],
       style: {},
     },
@@ -46,7 +46,7 @@ export default class extends Component {
         icon: iconColor,
         style: headerStyle,
       },
-      box: {
+      body: {
         cells,
         style: boxStyle,
       },

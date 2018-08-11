@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import Table from './component/table'
-import Card from './component/card'
+// import Card from './component/card'
+import View from './view'
 
 const cardData = {
   collapsible: false,
@@ -15,7 +16,7 @@ const cardData = {
   style: {
     borderRadius: 3,
   },
-  box: {
+  body: {
     style: {
       padding: '10px 12px',
     },
@@ -61,7 +62,41 @@ const cardData = {
   },
 }
 
+const viewData = [
+  {
+    span: 10,
+    offset: 2,
+    style: {
+      border: '1px solid #eee',
+    },
+    apps: [
+      {
+        type: 'Icon',
+        props: {
+          type: 'link',
+        },
+      },
+    ],
+  },
+  {
+    span: 6,
+    style: {
+      background: '#ddd',
+    },
+    apps: [
+      {
+        type: 'Button',
+        text: 'Button',
+        props: {
+          type: 'danger',
+        },
+      },
+    ],
+  },
+]
+
 // <Table api="http://127.0.0.1:2333/table.json" />
+// <Card {...cardData} />
 
 export default class extends Component {
   state = {
@@ -72,11 +107,8 @@ export default class extends Component {
     const { title } = this.state
 
     return (
-      <div>
-        <h3>
-          {title}
-        </h3>
-        <Card {...cardData} />
+      <div style={{ width: '100vw', height: '100vh' }}>
+        <View data={viewData} />
       </div>
     )
   }

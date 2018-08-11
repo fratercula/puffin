@@ -37,6 +37,10 @@ export default class extends Component {
     const { api: url } = this.props
     const pagination = { ...prev, current }
 
+    if (!url) {
+      return
+    }
+
     this.setState({ pagination })
     this.fetch({
       url,

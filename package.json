@@ -28,12 +28,12 @@
   },
   "homepage": "https://github.com/fratercula/puffin#readme",
   "peerDependencies": {
-    "antd": "^3.7.3",
+    "antd": "^3.8.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
-    "antd": "^3.7.3",
+    "antd": "^3.8.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",

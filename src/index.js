@@ -83,7 +83,7 @@ const viewData = [
         type: 'Timeline',
         props: {
           pending: 'Pending',
-          mode: 'right',
+          mode: 'alternate',
           items: [
             {
               text: 'Solve initial network problems 2015-09-01',

@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import { Timeline, Icon } from 'antd'
 import ChildNode from '../helper/childnode'
 
-function PuffinTimeLine(params) {
-  const {
-    pending,
-    mode,
-    items,
-  } = params
-
+function PuffinTimeLine({ pending, mode, items }) {
   return (
     <Timeline pending={pending} mode={mode}>
       {

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, message } from 'antd'
-import ChildNode from './childnode'
+import ChildNode from './helper/childnode'
+import Apps from './component'
 import Fetch from './helper/fetcher'
-
-const Antd = require('antd')
 
 export default class extends Component {
   static propTypes = {
@@ -60,7 +59,7 @@ export default class extends Component {
                         children = [],
                         style: appStyle,
                       } = app
-                      const App = Antd[type]
+                      const App = Apps[type]
 
                       return (
                         <div key={j} style={appStyle}>

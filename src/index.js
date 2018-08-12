@@ -79,6 +79,46 @@ const viewData = [
           type: 'link',
         },
       },
+      {
+        type: 'Timeline',
+        props: {
+          pending: 'Pending',
+          mode: 'right',
+          items: [
+            {
+              text: 'Solve initial network problems 2015-09-01',
+            },
+            {
+              node: 'div',
+              text: 'line1',
+              props: {
+                dot: 'up-circle',
+              },
+            },
+            {
+              node: 'div',
+              children: [
+                {
+                  node: 'span',
+                  text: 'span',
+                  props: {
+                    style: {
+                      color: 'red',
+                    },
+                  },
+                },
+                {
+                  type: 'Button',
+                  text: 'Button',
+                  props: {
+                    type: 'danger',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
     ],
   },
   {
@@ -103,17 +143,20 @@ const viewData = [
         children: [
           {
             node: 'div',
-            child: [
+            children: [
               {
                 node: 'h3',
-                child: [
+                children: [
                   {
                     type: 'Button',
+                    props: {
+                      type: 'danger',
+                    },
                     text: 'span',
                   },
                   {
                     node: 'span',
-                    child: [
+                    children: [
                       {
                         node: 'em',
                         text: 'em',
@@ -126,7 +169,12 @@ const viewData = [
           },
           {
             node: 'div',
-            child: [
+            props: {
+              style: {
+                background: '#fff',
+              },
+            },
+            children: [
               {
                 node: 'h3',
                 text: 'text',

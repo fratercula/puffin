@@ -70,6 +70,23 @@ const viewData = [
       border: '1px solid #eee',
     },
     apps: [
+      // {
+      //   type: 'Tooltip',
+      //   props: {
+      //     placement: 'topLeft',
+      //     title: 'Prompt Text',
+      //   },
+      //   children: [
+      //     {
+      //       type: 'Button',
+      //       children: [
+      //         {
+      //           text: 'Align edge / 边缘对齐',
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
       {
         type: 'Icon',
         style: {

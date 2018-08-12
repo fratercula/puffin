@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, message } from 'antd'
 import ChildNode from './helper/childnode'
-import Apps from './component'
+import component from './helper/component'
 import Fetch from './helper/fetcher'
 
 export default class extends Component {
@@ -59,7 +59,7 @@ export default class extends Component {
                         children = [],
                         style: appStyle,
                       } = app
-                      const App = Apps[type]
+                      const App = component(type)
 
                       return (
                         <div key={j} style={appStyle}>

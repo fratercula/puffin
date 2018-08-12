@@ -1,13 +1,7 @@
 import Timeline from './timeline'
+import Table from './table'
 
-const Antd = require('antd')
-
-const Apps = {}
-
-Object.keys(Antd).forEach((key) => {
-  Apps[key] = Antd[key]
-})
-
-Apps.Timeline = Timeline
-
-export default Apps
+export default {
+  Timeline,
+  Table,
+}

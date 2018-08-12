@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Apps from '../component'
+import components from '../component'
+
+const antd = require('antd')
 
 function ChildNode(node) {
   const {
@@ -27,19 +29,33 @@ function ChildNode(node) {
   }
 
   if (type) {
-    const App = Apps[type]
+    const key = type.split('.')
+
+    let Component
+
+    if (components[key[0]]) {
+      Component = key.length === 1 ? components[key[0]] : components[key[0]][key[1]]
+    } else if (antd[key[0]]) {
+      Component = key.length === 1 ? antd[key[0]] : antd[key[0]][key[1]]
+    }
+
+    if (!Component) {
+      window.console.error(`Component: ${type} was no found`)
+      return null
+    }
 
     if (text) {
       return (
-        <App {...props}>{text}</App>
+        <Component {...props}>{text}</Component>
       )
     }
+
     return (
-      <App {...props}>
+      <Component {...props}>
         {
           children.map((item, i) => (<ChildNode key={i} {...item} />))
         }
-      </App>
+      </Component>
     )
   }
 

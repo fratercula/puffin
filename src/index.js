@@ -81,6 +81,12 @@ const viewData = [
       },
       {
         type: 'Timeline',
+        children: [
+          {
+            node: 'p',
+            text: 'p',
+          },
+        ],
         props: {
           pending: 'Pending',
           mode: 'alternate',

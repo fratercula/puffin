@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, message } from 'antd'
+import ChildNode from './childnode'
 import Fetch from './helper/fetcher'
 
 const Antd = require('antd')
@@ -55,13 +56,26 @@ export default class extends Component {
                     apps.map((app, j) => {
                       const {
                         type,
-                        props,
-                        text,
+                        props = {},
+                        children = [],
+                        style: appStyle,
                       } = app
                       const App = Antd[type]
 
                       return (
-                        <App key={j} {...props}>{text}</App>
+                        <div key={j} style={appStyle}>
+                          {
+                            children.length
+                              ? (
+                                <App {...props}>
+                                  {
+                                    children.map((ch, l) => (<ChildNode key={l} {...ch} />))
+                                  }
+                                </App>
+                              )
+                              : (<App {...props} />)
+                          }
+                        </div>
                       )
                     })
                   }

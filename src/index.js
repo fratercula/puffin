@@ -72,6 +72,9 @@ const viewData = [
     apps: [
       {
         type: 'Icon',
+        style: {
+          marginTop: 30,
+        },
         props: {
           type: 'link',
         },
@@ -86,10 +89,51 @@ const viewData = [
     apps: [
       {
         type: 'Button',
-        text: 'Button',
+        children: [
+          {
+            text: 'Button',
+          },
+        ],
         props: {
           type: 'danger',
         },
+      },
+      {
+        type: 'Carousel',
+        children: [
+          {
+            node: 'div',
+            child: [
+              {
+                node: 'h3',
+                child: [
+                  {
+                    type: 'Button',
+                    text: 'span',
+                  },
+                  {
+                    node: 'span',
+                    child: [
+                      {
+                        node: 'em',
+                        text: 'em',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            node: 'div',
+            child: [
+              {
+                node: 'h3',
+                text: 'text',
+              },
+            ],
+          },
+        ],
       },
     ],
   },

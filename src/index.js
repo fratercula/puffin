@@ -70,23 +70,124 @@ const viewData = [
       border: '1px solid #eee',
     },
     apps: [
-      // {
-      //   type: 'Tooltip',
-      //   props: {
-      //     placement: 'topLeft',
-      //     title: 'Prompt Text',
-      //   },
-      //   children: [
-      //     {
-      //       type: 'Button',
-      //       children: [
-      //         {
-      //           text: 'Align edge / 边缘对齐',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
+      {
+        type: 'Tooltip',
+        style: {
+          paddingTop: 100,
+        },
+        props: {
+          placement: 'bottom',
+          title: 'Prompt Text',
+        },
+        children: [
+          {
+            type: 'Input.TextArea',
+            props: {
+              rows: 4,
+              disabled: true,
+              value: '????',
+            },
+          },
+        ],
+      },
+
+      {
+        type: 'Timeline',
+        props: {
+          items: [
+            {
+              node: 'p',
+              text: '????',
+              props: {
+                dot: {
+                  type: 'Icon',
+                  props: {
+                    type: 'link',
+                  },
+                },
+              },
+            },
+            {
+              node: 'div',
+              text: '------',
+              props: {
+                dot: {
+                  node: 'div',
+                  text: 1,
+                  props: {
+                    style: {
+                      borderRadius: '50%',
+                      width: 30,
+                      height: 30,
+                      border: '1px solid #333',
+                    },
+                  },
+                },
+              },
+            },
+            {
+              node: 'div',
+              props: {
+                color: 'red',
+              },
+              children: [
+                {
+                  type: 'Button',
+                  text: 'Button',
+                  props: {
+                    type: 'dashed',
+                  },
+                },
+                {
+                  node: 'span',
+                  text: '???',
+                },
+              ],
+            },
+          ],
+          pending: 'pending',
+          mode: 'alternate',
+        },
+      },
+
+      {
+        type: 'Collapse',
+        style: {
+          marginTop: 30,
+        },
+        props: {
+          defaultActiveKey: ['1'],
+        },
+        children: [
+          {
+            type: 'Collapse.Panel',
+            props: {
+              header: 'This is panel header 1',
+              key: '1',
+            },
+            children: [
+              {
+                node: 'p',
+                text: 'A dog is a type of domesticated animal.',
+              },
+            ],
+          },
+          {
+            type: 'Collapse.Panel',
+            props: {
+              header: 'This is panel header 2',
+              key: '2',
+            },
+            children: [
+              {
+                node: 'p',
+                text: 'A dog is a type of domesticated animal.',
+              },
+            ],
+          },
+        ],
+      },
+
       {
         type: 'Icon',
         style: {
@@ -94,52 +195,6 @@ const viewData = [
         },
         props: {
           type: 'link',
-        },
-      },
-      {
-        type: 'Timeline',
-        children: [
-          {
-            node: 'p',
-            text: 'p',
-          },
-        ],
-        props: {
-          pending: 'Pending',
-          mode: 'alternate',
-          items: [
-            {
-              text: 'Solve initial network problems 2015-09-01',
-            },
-            {
-              node: 'div',
-              text: 'line1',
-              props: {
-                dot: 'up-circle',
-              },
-            },
-            {
-              node: 'div',
-              children: [
-                {
-                  node: 'span',
-                  text: 'span',
-                  props: {
-                    style: {
-                      color: 'red',
-                    },
-                  },
-                },
-                {
-                  type: 'Button',
-                  text: 'Button',
-                  props: {
-                    type: 'danger',
-                  },
-                },
-              ],
-            },
-          ],
         },
       },
     ],

@@ -1,6 +1,5 @@
+import * as antd from 'antd'
 import components from '../component'
-
-const antd = require('antd')
 
 export default function (type) {
   const key = type.split('.')

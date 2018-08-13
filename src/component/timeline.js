@@ -9,10 +9,8 @@ function PuffinTimeLine({ pending, mode, items }) {
       {
         items.map((item, i) => {
           const { props = {} } = item
-          const { dot, color } = props
-
-          delete props.color
-          delete props.dot
+          const { dot, color, ...rest } = props
+          const childProps = { ...item, props: rest }
 
           return (
             <Timeline.Item
@@ -20,7 +18,7 @@ function PuffinTimeLine({ pending, mode, items }) {
               color={color}
               dot={dot ? (<ChildNode {...dot} />) : undefined}
             >
-              <ChildNode {...item} />
+              <ChildNode {...childProps} />
             </Timeline.Item>
           )
         })

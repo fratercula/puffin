@@ -69,7 +69,7 @@ const viewData = [
     style: {
       border: '1px solid #eee',
     },
-    apps: [
+    components: [
       {
         type: 'Tooltip',
         style: {
@@ -204,7 +204,7 @@ const viewData = [
     style: {
       background: '#ddd',
     },
-    apps: [
+    components: [
       {
         type: 'Button',
         children: [
@@ -278,7 +278,7 @@ export default class extends Component {
 
     return (
       <div style={{ width: '100vw', height: '100vh' }}>
-        <View data={viewData} />
+        <View schema={viewData} />
       </div>
     )
   }

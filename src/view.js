@@ -8,12 +8,12 @@ import Fetch from './helper/fetcher'
 export default class extends Component {
   static propTypes = {
     api: PropTypes.string,
-    data: PropTypes.array,
+    schema: PropTypes.array,
   }
 
   static defaultProps = {
     api: '',
-    data: [],
+    schema: [],
   }
 
   state = {
@@ -30,60 +30,36 @@ export default class extends Component {
 
   render() {
     const { loading } = this.state
-    const { data } = this.props
+    const { schema } = this.props
 
     return (
-      <div style={{ width: '100%', height: '100%' }}>
-        <Row style={{ width: '100%', height: '100%' }}>
-          {
-            data.map((item, i) => {
-              const {
-                span,
-                offset,
-                style,
-                apps = [],
-              } = item
+      <Row style={{ width: '100%', height: '100%' }}>
+        {
+          schema.map((item, i) => {
+            const {
+              span,
+              offset,
+              style,
+              components = [],
+            } = item
 
-              return (
-                <Col
-                  key={i}
-                  span={span}
-                  offset={offset}
-                  style={style}
-                >
-                  {
-                    apps.map((app, j) => {
-                      const {
-                        type,
-                        props = {},
-                        children = [],
-                        style: appStyle,
-                      } = app
-                      const App = component(type)
-
-                      return (
-                        <div key={j} style={appStyle}>
-                          {
-                            children.length
-                              ? (
-                                <App {...props}>
-                                  {
-                                    children.map((ch, l) => (<ChildNode key={l} {...ch} />))
-                                  }
-                                </App>
-                              )
-                              : (<App {...props} />)
-                          }
-                        </div>
-                      )
-                    })
-                  }
-                </Col>
-              )
-            })
-          }
-        </Row>
-      </div>
+            return (
+              <Col
+                key={i}
+                span={span}
+                offset={offset}
+                style={style}
+              >
+                {
+                  components.map((c, j) => (
+                    <ChildNode {...c} key={j} />
+                  ))
+                }
+              </Col>
+            )
+          })
+        }
+      </Row>
     )
   }
 }

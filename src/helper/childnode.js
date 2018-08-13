@@ -53,7 +53,7 @@ function ChildNode(node) {
 
 ChildNode.propTypes = {
   node: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.any,
   type: PropTypes.string,
   props: PropTypes.object,
   children: PropTypes.array,

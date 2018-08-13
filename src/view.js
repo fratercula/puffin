@@ -36,20 +36,10 @@ export default class extends Component {
       <Row style={{ width: '100%', height: '100%' }}>
         {
           schema.map((item, i) => {
-            const {
-              span,
-              offset,
-              style,
-              components = [],
-            } = item
+            const { components = [], props = {} } = item
 
             return (
-              <Col
-                key={i}
-                span={span}
-                offset={offset}
-                style={style}
-              >
+              <Col key={i} {...props}>
                 {
                   components.map((c, j) => (
                     <ChildNode {...c} key={j} />

@@ -64,10 +64,12 @@ const cardData = {
 
 const viewData = [
   {
-    span: 10,
-    offset: 2,
-    style: {
-      border: '1px solid #eee',
+    props: {
+      span: 10,
+      offset: 2,
+      style: {
+        border: '1px solid #eee',
+      },
     },
     components: [
       {
@@ -200,9 +202,12 @@ const viewData = [
     ],
   },
   {
-    span: 6,
-    style: {
-      background: '#ddd',
+    props: {
+      id: 'text',
+      span: 6,
+      style: {
+        background: '#ddd',
+      },
     },
     components: [
       {

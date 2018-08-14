@@ -81,7 +81,7 @@ function ChildNode(node) {
     )
   }
 
-  return text
+  return text || null
 }
 
 ChildNode.propTypes = {

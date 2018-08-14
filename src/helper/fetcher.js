@@ -23,7 +23,9 @@ export default function (args) {
       .map(k => `${esc(k)}=${esc(data[k])}`)
       .join('&')
 
-    query = `${query}?${qs}`
+    if (qs) {
+      query = `${query}?${qs}`
+    }
   }
 
   return fetch(query, params).then(res => res.json())

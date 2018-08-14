@@ -1,35 +1,79 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Collapse } from 'antd'
+import { Collapse, Spin, Alert } from 'antd'
 import ChildNode from '../helper/childnode'
+import fetch from '../helper/fetcher'
 
 export default class extends Component {
   static propTypes = {
+    api: PropTypes.string,
     defaultActiveKey: PropTypes.array,
     accordion: PropTypes.bool,
     items: PropTypes.array,
   }
 
   static defaultProps = {
-    defaultActiveKey: ['0'],
+    api: '',
+    defaultActiveKey: [0],
     accordion: false,
     items: [],
   }
 
   state = {
     loading: false,
+    error: '',
+    defaultActiveKey: [0], // eslint-disable-line
+    accordion: false, // eslint-disable-line
+    items: [], // eslint-disable-line
+  }
+
+  componentDidMount() {
+    const { api: url } = this.props
+    if (url) {
+      fetch({ url })
+        .then(({ c, m, d }) => {
+          if (c !== 0) {
+            this.setState({
+              error: m || 'Fetch Error',
+              loading: false,
+            })
+            return
+          }
+          this.setState({
+            loading: false,
+            ...d,
+          })
+        })
+        .catch(err => this.setState({
+          error: err.message || 'Fetch Error',
+          loading: false,
+        }))
+    }
   }
 
   render() {
+    const { api } = this.props
+    const { loading, error } = this.state
+
+    if (error) {
+      return (
+        <Alert
+          message={`Component \`Collapse\`: ${error}`}
+          type="error"
+          showIcon
+        />
+      )
+    }
+
     const {
       defaultActiveKey,
       accordion,
       items = [],
-    } = this.props
+    } = api ? this.state : this.props
 
-    return (
+    const Main = (
       <Collapse
-        defaultActiveKey={defaultActiveKey}
+        defaultActiveKey={defaultActiveKey.map(n => n.toString())}
         accordion={accordion}
       >
         {
@@ -57,5 +101,15 @@ export default class extends Component {
         }
       </Collapse>
     )
+
+    if (api) {
+      return (
+        <Spin spinning={loading}>
+          {Main}
+        </Spin>
+      )
+    }
+
+    return Main
   }
 }

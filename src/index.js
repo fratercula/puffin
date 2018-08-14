@@ -253,6 +253,50 @@ const viewData = [
           type: 'danger',
         },
       },
+
+      {
+        type: 'Collapse',
+        props: {
+          api: 'http://127.0.0.1:2333/collapse.json',
+        },
+      },
+
+      {
+        type: 'Tabs',
+        props: {
+          style: {
+            padding: 30,
+            background: '#fff',
+          },
+        },
+        children: [
+          {
+            type: 'Tabs.TabPane',
+            props: {
+              tab: 'tab1',
+            },
+            children: [
+              {
+                node: 'p',
+                text: 'Content of Tab Pane 1',
+              },
+            ],
+          },
+          {
+            type: 'Tabs.TabPane',
+            props: {
+              tab: 'tab2',
+            },
+            children: [
+              {
+                node: 'p',
+                text: 'Content of Tab Pane 2',
+              },
+            ],
+          },
+        ],
+      },
+
       {
         type: 'Carousel',
         children: [

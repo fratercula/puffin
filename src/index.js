@@ -153,6 +153,37 @@ const viewData = [
       },
 
       {
+        type: 'Card',
+        props: {
+          style: {
+            width: 240,
+          },
+          cover: {
+            // node: 'p',
+            // text: '???',
+            // props: {
+            //   style: {
+            //     color: 'red',
+            //   },
+            // },
+            node: 'img',
+            props: {
+              src: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
+            },
+          },
+        },
+        children: [
+          {
+            type: 'Card.Meta',
+            props: {
+              title: 'Europe Street beat',
+              description: 'description',
+            },
+          },
+        ],
+      },
+
+      {
         type: 'Collapse',
         props: {
           defaultActiveKey: ['0', '1'],

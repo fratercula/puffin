@@ -4,6 +4,18 @@ import { Collapse } from 'antd'
 import ChildNode from '../helper/childnode'
 
 export default class extends Component {
+  static propTypes = {
+    defaultActiveKey: PropTypes.array,
+    accordion: PropTypes.bool,
+    items: PropTypes.array,
+  }
+
+  static defaultProps = {
+    defaultActiveKey: ['0'],
+    accordion: false,
+    items: [],
+  }
+
   state = {
     loading: false,
   }
@@ -25,8 +37,8 @@ export default class extends Component {
             const { props = {} } = item
             const {
               disabled,
-              key,
               header,
+              showArrow,
               ...rest
             } = props
             const childProps = { ...item, props: rest }
@@ -34,6 +46,7 @@ export default class extends Component {
             return (
               <Collapse.Panel
                 key={i}
+                showArrow={showArrow}
                 disabled={disabled}
                 header={(<ChildNode {...header} />)}
               >

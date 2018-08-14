@@ -20,6 +20,6 @@ export default function (type) {
     return antd[key[0]][key[1]]
   }
 
-  window.console.error(`Component: ${type} was no found`)
+  window.console.error(`Component: \`${type}\` was no found`)
   return null
 }

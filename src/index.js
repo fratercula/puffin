@@ -154,49 +154,50 @@ const viewData = [
 
       {
         type: 'Collapse',
-        style: {
-          marginTop: 30,
-        },
         props: {
-          defaultActiveKey: ['1'],
+          defaultActiveKey: ['0', '1'],
+          // accordion: true,
+          items: [
+            {
+              node: 'div',
+              props: {
+                header: {
+                  text: 'This is panel header 1',
+                },
+                showArrow: false,
+              },
+              children: [
+                {
+                  node: 'p',
+                  text: 'A dog is a type of domesticated animal.',
+                },
+              ],
+            },
+            {
+              node: 'div',
+              props: {
+                header: {
+                  text: 'This is panel header 1',
+                },
+              },
+              children: [
+                {
+                  node: 'p',
+                  text: 'A dog is a type of domesticated animal.',
+                },
+              ],
+            },
+          ],
         },
-        children: [
-          {
-            type: 'Collapse.Panel',
-            props: {
-              header: 'This is panel header 1',
-              key: '1',
-            },
-            children: [
-              {
-                node: 'p',
-                text: 'A dog is a type of domesticated animal.',
-              },
-            ],
-          },
-          {
-            type: 'Collapse.Panel',
-            props: {
-              header: 'This is panel header 2',
-              key: '2',
-            },
-            children: [
-              {
-                node: 'p',
-                text: 'A dog is a type of domesticated animal.',
-              },
-            ],
-          },
-        ],
       },
 
       {
         type: 'Icon',
-        style: {
-          marginTop: 30,
-        },
         props: {
           type: 'link',
+          style: {
+            marginTop: 30,
+          },
         },
       },
     ],

@@ -260,6 +260,12 @@ const viewData = [
           api: 'http://127.0.0.1:2333/collapse.json',
         },
       },
+      {
+        type: 'Tabs',
+        props: {
+          api: 'http://127.0.0.1:2333/tabs.json',
+        },
+      },
 
       {
         type: 'Tabs',

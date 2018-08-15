@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Collapse, Spin, Alert } from 'antd'
+import { Tabs, Spin, Alert } from 'antd'
 import ChildNode from '../helper/childnode'
 import fetch from '../helper/fetcher'
 
 export default class extends Component {
   static propTypes = {
     api: PropTypes.string,
-    defaultActiveKey: PropTypes.array,
-    accordion: PropTypes.bool,
+    defaultActiveKey: PropTypes.number,
+    tabBarExtraContent: PropTypes.object,
     items: PropTypes.array,
   }
 
   static defaultProps = {
     api: '',
-    defaultActiveKey: [0],
-    accordion: false,
+    defaultActiveKey: 0,
+    tabBarExtraContent: {},
     items: [],
   }
 
   state = {
     loading: false,
     error: '',
-    defaultActiveKey: [0], // eslint-disable-line
-    accordion: false, // eslint-disable-line
+    defaultActiveKey: 0, // eslint-disable-line
+    tabBarExtraContent: {}, // eslint-disable-line
     items: [], // eslint-disable-line
   }
 
@@ -61,7 +61,7 @@ export default class extends Component {
     if (error) {
       return (
         <Alert
-          message={`Component \`Collapse\`: ${error}`}
+          message={`Component \`Tabs\`: ${error}`}
           type="error"
           showIcon
         />
@@ -70,39 +70,39 @@ export default class extends Component {
 
     const {
       defaultActiveKey,
-      accordion,
+      tabBarExtraContent,
       items,
+      ...rest
     } = api ? this.state : this.props
 
     const Main = (
-      <Collapse
-        defaultActiveKey={defaultActiveKey.map(n => n.toString())}
-        accordion={accordion}
+      <Tabs
+        defaultActiveKey={defaultActiveKey.toString()}
+        tabBarExtraContent={(<ChildNode {...tabBarExtraContent} />)}
+        {...rest}
       >
         {
           items.map((item, i) => {
             const { props = {} } = item
             const {
               disabled,
-              header,
-              showArrow,
-              ...rest
+              tab,
+              ...childRest
             } = props
-            const childProps = { ...item, props: rest }
+            const childProps = { ...item, props: childRest }
 
             return (
-              <Collapse.Panel
+              <Tabs.TabPane
                 key={i}
-                showArrow={showArrow}
                 disabled={disabled}
-                header={(<ChildNode {...header} />)}
+                tab={(<ChildNode {...tab} />)}
               >
                 <ChildNode {...childProps} />
-              </Collapse.Panel>
+              </Tabs.TabPane>
             )
           })
         }
-      </Collapse>
+      </Tabs>
     )
 
     if (api) {

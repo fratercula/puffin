@@ -1,0 +1,44 @@
+{
+  "c": 0,
+  "m": "",
+  "d": {
+    "defaultActiveKey": 1,
+    "tabBarExtraContent": {
+      "type": "Button",
+      "text": "Button",
+      "props": {
+        "type": "dashed"
+      }
+    },
+    "items": [
+      {
+        "node": "div",
+        "props": {
+          "tab": {
+            "node": "button",
+            "text": "button"
+          }
+        },
+        "children": [
+          {
+            "text": "Content of Tab Pane 1"
+          }
+        ]
+      },
+      {
+        "node": "div",
+        "props": {
+          "tab": {
+            "node": "button",
+            "text": "button1"
+          }
+        },
+        "children": [
+          {
+            "text": "Content of Tab Pane 0"
+          }
+        ]
+      }
+    ]
+  }
+}

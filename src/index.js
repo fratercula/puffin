@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import Table from './component/table'
-// import Card from './component/card'
 import View from './view'
 
 const cardData = {
@@ -65,7 +63,7 @@ const cardData = {
 const viewData = [
   {
     props: {
-      span: 10,
+      span: 12,
       offset: 2,
       style: {
         border: '1px solid #eee',
@@ -73,22 +71,21 @@ const viewData = [
     },
     components: [
       {
-        type: 'Tooltip',
-        style: {
-          paddingTop: 100,
+        type: 'Table',
+        props: {
+          api: 'http://127.0.0.1:2333/table.json',
         },
+      },
+
+      {
+        type: 'Tooltip',
         props: {
           placement: 'bottom',
           title: 'Prompt Text',
         },
         children: [
           {
-            type: 'Input.TextArea',
-            props: {
-              rows: 4,
-              disabled: true,
-              value: '????',
-            },
+            text: 'tkkkkk',
           },
         ],
       },
@@ -302,6 +299,8 @@ const viewData = [
           },
         ],
       },
+
+
 
       {
         type: 'Carousel',

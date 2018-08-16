@@ -2,19 +2,34 @@
   "c": 0,
   "m": "",
   "d": {
+    "scroll": {
+      "x": 1000,
+      "y": 100
+    },
     "columns": [
       {
         "title": "Full Name",
-        "width": 100,
-        "key": "name"
+        "width": 200,
+        "key": "name",
+        "fixed": "left",
+        "render": {
+          "node": "div",
+          "children": [
+            {
+              "type": "Button",
+              "text": "${text}buttonm${record.age}ttoos${index}"
+            }
+          ]
+        }
       },
       {
         "title": "Age",
-        "width": 100,
+        "width": 200,
         "sorter": true,
         "key": "age"
       },
       {
+        "width": 200,
         "title": "Gender",
         "key": "gender",
         "filters": [
@@ -23,6 +38,7 @@
         ]
       },
       {
+        "width": 200,
         "title": "address",
         "key": "address"
       }
@@ -53,7 +69,7 @@
         "address": "London Park no. 3"
       }
     ],
-    "bordered": true,
+    "bordered": false,
     "size": "middle",
     "pagination": {
       "total": 100,

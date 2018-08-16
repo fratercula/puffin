@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Table, Alert } from 'antd'
 import PropTypes from 'prop-types'
+import ChildNode from '../helper/childnode'
 import fetch from '../helper/fetcher'
+import textParser from '../helper/textParser'
 
 export default class extends Component {
   static propTypes = {
@@ -54,6 +56,7 @@ export default class extends Component {
 
   fetch = (params) => {
     this.setState({ loading: true })
+
     fetch(params)
       .then(({ c, m, d }) => {
         if (c !== 0) {
@@ -75,53 +78,60 @@ export default class extends Component {
   }
 
   render() {
-    const {
-      api,
-      columns: c,
-      dataSource: d,
-    } = this.props
+    const { api } = this.props
     const { loading, error } = this.state
-    let { columns, dataSource } = this.state
+    const {
+      columns,
+      dataSource,
+    } = api ? this.state : this.props
 
-    if (!api) {
-      columns = c
-      dataSource = d
+    if (error) {
+      return (
+        <Alert
+          message={`Component \`Table\`: ${error}`}
+          type="error"
+          showIcon
+        />
+      )
     }
 
     for (let i = 0; i < columns.length; i += 1) {
       columns[i].dataIndex = columns[i].key
+
+      const { render } = columns[i]
+      if (render) {
+        columns[i].render = (text, record, index) => {
+          const rest = textParser(render, { text, record, index })
+          return (
+            <ChildNode {...rest} />
+          )
+        }
+      }
     }
 
     for (let i = 0; i < dataSource.length; i += 1) {
       dataSource[i].key = i
     }
 
+    if (api) {
+      return (
+        <Table
+          columns={columns}
+          dataSource={dataSource}
+          loading={loading}
+          onChange={this.onChange}
+          {...this.state}
+        />
+      )
+    }
+
     return (
-      <div>
-        {
-          error ? <Alert message={error} type="error" showIcon /> : null
-        }
-        {
-          api
-            ? (
-              <Table
-                columns={columns}
-                dataSource={dataSource}
-                loading={loading}
-                onChange={this.onChange}
-                {...this.state}
-              />
-            )
-            : (
-              <Table
-                columns={columns}
-                dataSource={dataSource}
-                onChange={this.onChange}
-                {...this.props}
-              />
-            )
-        }
-      </div>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        onChange={this.onChange}
+        {...this.props}
+      />
     )
   }
 }

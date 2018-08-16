@@ -265,42 +265,21 @@ const viewData = [
       },
 
       {
-        type: 'Tabs',
+        node: 'div',
         props: {
           style: {
-            padding: 30,
             background: '#fff',
           },
         },
         children: [
           {
-            type: 'Tabs.TabPane',
+            type: 'Timeline',
             props: {
-              tab: 'tab1',
+              api: 'http://127.0.0.1:2333/timeline.json',
             },
-            children: [
-              {
-                node: 'p',
-                text: 'Content of Tab Pane 1',
-              },
-            ],
-          },
-          {
-            type: 'Tabs.TabPane',
-            props: {
-              tab: 'tab2',
-            },
-            children: [
-              {
-                node: 'p',
-                text: 'Content of Tab Pane 2',
-              },
-            ],
           },
         ],
       },
-
-
 
       {
         type: 'Carousel',

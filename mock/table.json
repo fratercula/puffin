@@ -9,15 +9,19 @@
     "columns": [
       {
         "title": "Full Name",
-        "width": 200,
+        "width": 300,
         "key": "name",
         "fixed": "left",
         "render": {
           "node": "div",
+          "props": {
+            "style": {
+              "whiteSpace": "nowrap"
+            }
+          },
           "children": [
             {
-              "type": "Button",
-              "text": "${text}buttonm${record.age}ttoos${index}"
+              "text": "text: ${text} age: ${record.age} index: ${index}"
             }
           ]
         }

@@ -1,42 +1,109 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Timeline } from 'antd'
+import { Timeline, Spin, Alert } from 'antd'
 import ChildNode from '../helper/childnode'
+import fetch from '../helper/fetcher'
 
-function PuffinTimeLine({ pending, mode, items }) {
-  return (
-    <Timeline pending={pending} mode={mode}>
-      {
-        items.map((item, i) => {
-          const { props = {} } = item
-          const { dot, color, ...rest } = props
-          const childProps = { ...item, props: rest }
+export default class extends Component {
+  static propTypes = {
+    pending: PropTypes.string,
+    mode: PropTypes.string,
+    items: PropTypes.array,
+    api: PropTypes.string,
+  }
 
-          return (
-            <Timeline.Item
-              key={i}
-              color={color}
-              dot={dot ? (<ChildNode {...dot} />) : undefined}
-            >
-              <ChildNode {...childProps} />
-            </Timeline.Item>
-          )
+  static defaultProps = {
+    pending: '',
+    mode: '',
+    items: [],
+    api: '',
+  }
+
+  state = {
+    pending: '', // eslint-disable-line
+    mode: '', // eslint-disable-line
+    items: [], // eslint-disable-line
+    loading: false,
+    error: '',
+  }
+
+  componentDidMount() {
+    const { api: url } = this.props
+
+    if (url) {
+      this.setState({ loading: true })
+
+      fetch({ url })
+        .then(({ c, m, d }) => {
+          if (c !== 0) {
+            this.setState({
+              error: m || 'Fetch Error',
+              loading: false,
+            })
+            return
+          }
+          this.setState({
+            loading: false,
+            ...d,
+          })
         })
-      }
-    </Timeline>
-  )
-}
+        .catch(err => this.setState({
+          error: err.message || 'Fetch Error',
+          loading: false,
+        }))
+    }
+  }
 
-PuffinTimeLine.propTypes = {
-  pending: PropTypes.string,
-  mode: PropTypes.string,
-  items: PropTypes.array,
-}
+  render() {
+    const { api } = this.props
+    const { loading, error } = this.state
 
-PuffinTimeLine.defaultProps = {
-  pending: '',
-  mode: '',
-  items: [],
-}
+    if (error) {
+      return (
+        <Alert
+          message={`Component \`Timeline\`: ${error}`}
+          type="error"
+          showIcon
+        />
+      )
+    }
 
-export default PuffinTimeLine
+    const {
+      pending,
+      mode,
+      items,
+    } = api ? this.state : this.props
+
+    const Main = (
+      <Timeline pending={pending} mode={mode}>
+        {
+          items.map((item, i) => {
+            const { props = {} } = item
+            const { dot, color, ...rest } = props
+            const childProps = { ...item, props: rest }
+
+            return (
+              <Timeline.Item
+                key={i}
+                color={color}
+                dot={dot ? (<ChildNode {...dot} />) : undefined}
+              >
+                <ChildNode {...childProps} />
+              </Timeline.Item>
+            )
+          })
+        }
+      </Timeline>
+    )
+
+    if (api) {
+      return (
+        <Spin spinning={loading}>
+          {Main}
+        </Spin>
+      )
+    }
+
+    return Main
+  }
+}

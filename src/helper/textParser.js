@@ -16,17 +16,5 @@ export function tplls(literals, variable) {
 }
 
 export default function textParser(node, variable) {
-  let { text, children = [] } = node
-
-  text = tplls(text, variable)
-
-  if (children.length) {
-    children = children.map(item => textParser(item, variable))
-  }
-
-  return {
-    ...node,
-    text,
-    children,
-  }
+  return JSON.parse(tplls(JSON.stringify(node), variable))
 }

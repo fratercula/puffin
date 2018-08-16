@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import component from './component'
+import textParser from './textParser'
 
 function ChildNode(node) {
   const {
@@ -26,9 +27,29 @@ function ChildNode(node) {
   })
 
   Object.keys(propsChild).forEach((key) => {
-    PropsChildNode[key] = (
-      <ChildNode {...propsChild[key]} />
-    )
+    const { variable } = propsChild[key]
+
+    if (!variable) {
+      PropsChildNode[key] = (
+        <ChildNode {...propsChild[key]} />
+      )
+      return
+    }
+
+    const fn = `
+      const { textParser, React, propsChild, key, ChildNode } = this
+      const rest = textParser(propsChild[key], { ${variable.join()} })
+      return React.createElement(ChildNode, rest)
+    `
+
+    // eslint-disable-next-line
+    PropsChildNode[key] = (new Function(...variable, fn)).bind({
+      textParser,
+      React,
+      propsChild,
+      key,
+      ChildNode,
+    })
   })
 
   if (Node) {

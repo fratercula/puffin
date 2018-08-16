@@ -326,6 +326,119 @@ const viewData = [
           },
         ],
       },
+
+      {
+        type: 'Card',
+        props: {
+          title: 'Card',
+        },
+        children: [
+          {
+            type: 'Card.Grid',
+            props: {
+              style: {
+                width: '25%',
+                textAlign: 'center',
+              },
+            },
+            text: 'Grid',
+          },
+          {
+            type: 'Card.Grid',
+            props: {
+              style: {
+                width: '25%',
+                textAlign: 'center',
+              },
+            },
+            text: 'Grid',
+          },
+          {
+            type: 'Card.Grid',
+            props: {
+              style: {
+                width: '25%',
+                textAlign: 'center',
+              },
+            },
+            text: 'Grid',
+          },
+          {
+            type: 'Card.Grid',
+            props: {
+              style: {
+                width: '25%',
+                textAlign: 'center',
+              },
+            },
+            text: 'Grid',
+          },
+          {
+            type: 'Card.Grid',
+            props: {
+              style: {
+                width: '25%',
+                textAlign: 'center',
+              },
+            },
+            text: 'Grid',
+          },
+        ],
+      },
+
+      {
+        type: 'List',
+        props: {
+          grid: { gutter: 16, column: 4 },
+          dataSource: [
+            { title: 'content 1' },
+            { title: 'content 2' },
+            { title: 'content 3' },
+          ],
+          renderItem: {
+            variable: ['item'],
+            type: 'List.Item',
+            children: [
+              {
+                type: 'Card',
+                props: {
+                  title: '${item.title}',
+                },
+                text: '${item.title}',
+              },
+            ],
+          },
+        },
+      },
+
+      {
+        type: 'Card',
+        props: {
+          title: 'Card title',
+          extra: {
+            node: 'a',
+            text: 'More',
+            props: {
+              href: '#',
+            },
+          },
+        },
+        children: [
+          {
+            node: 'p',
+            text: 'Card content',
+          },
+          {
+            node: 'p',
+            text: 'Card content',
+          },
+          {
+            node: 'p',
+            text: 'Card content',
+          },
+        ],
+      },
+
     ],
   },
 ]

@@ -27,27 +27,29 @@ function ChildNode(node) {
   })
 
   Object.keys(propsChild).forEach((key) => {
-    const { variable } = propsChild[key]
+    const current = propsChild[key]
+    const { variable } = current
 
     if (!variable) {
       PropsChildNode[key] = (
-        <ChildNode {...propsChild[key]} />
+        <ChildNode {...current} />
       )
       return
     }
 
     const fn = `
-      const { textParser, React, propsChild, key, ChildNode } = this
-      const rest = textParser(propsChild[key], { ${variable.join()} })
+      var textParser = this.textParser
+      var React = this.React
+      var node = this.node
+      var ChildNode = this.ChildNode
+      var rest = textParser(node, { ${variable.join()} })
       return React.createElement(ChildNode, rest)
     `
 
-    // eslint-disable-next-line
-    PropsChildNode[key] = (new Function(...variable, fn)).bind({
+    PropsChildNode[key] = new Function(...variable, fn).bind({
       textParser,
       React,
-      propsChild,
-      key,
+      node: current,
       ChildNode,
     })
   })

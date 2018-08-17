@@ -11,8 +11,7 @@ export function tplls(literals, variable) {
     return literals
   }
 
-  // eslint-disable-next-line
-  return new Function(...keys, 'return `' + literals + '`')(...values)
+  return new Function(...keys, `return \`${literals}\``)(...values)
 }
 
 export default function textParser(node, variable) {

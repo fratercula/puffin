@@ -13,8 +13,6 @@
   },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --hot --inline",
-    "build:js": "babel src -d lib",
-    "build:css": "lessc src/index.less lib/index.css",
     "build": "NODE_ENV=production webpack --hide-modules --progress --colors",
     "lint": "eslint ./src --fix"
   },
@@ -36,7 +34,6 @@
   },
   "devDependencies": {
     "antd": "^3.8.1",
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",

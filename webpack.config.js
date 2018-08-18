@@ -1,18 +1,32 @@
 const { NODE_ENV } = process.env
 const dev = NODE_ENV === 'development'
 const umd = NODE_ENV === 'production'
+const demo = NODE_ENV === 'demo'
+
+let output = {
+  library: 'puffin',
+  libraryTarget: umd ? 'umd' : 'commonjs2',
+  filename: 'puffin.js',
+  path: `${__dirname}/${umd ? 'dist' : 'lib'}`,
+}
+
+if (dev) {
+  output = { filename: 'puffin.js' }
+}
+
+if (demo) {
+  output = {
+    filename: 'index.js',
+    path: `${__dirname}/docs`,
+  }
+}
 
 module.exports = {
   mode: dev ? 'development' : 'production',
 
-  entry: dev ? './entry/index.js' : './entry/entry.js',
+  entry: dev || demo ? './entry/index.js' : './entry/entry.js',
 
-  output: dev ? { filename: 'puffin.js' } : {
-    library: 'puffin',
-    libraryTarget: umd ? 'umd' : 'commonjs2',
-    filename: 'puffin.js',
-    path: `${__dirname}/${umd ? 'dist' : 'lib'}`,
-  },
+  output,
 
   resolve: {
     extensions: ['.js'],
@@ -44,8 +58,8 @@ module.exports = {
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
   externals: dev ? {} : {
-    react: umd ? 'React' : 'commonjs react',
-    'react-dom': umd ? 'ReactDOM' : 'commonjs reactDom',
-    antd: umd ? 'antd' : 'commonjs antd',
+    react: umd || demo ? 'React' : 'commonjs react',
+    'react-dom': umd || demo ? 'ReactDOM' : 'commonjs reactDom',
+    antd: umd || demo ? 'antd' : 'commonjs antd',
   },
 }

@@ -40,7 +40,7 @@ class Main extends Component {
         </div>
         <div className="component">
           {
-            useApi ? <Puffin api="/mock/api.json" /> : <Puffin schema={schema} />
+            useApi ? <Puffin api="./mock/api.json" /> : <Puffin schema={schema} />
           }
         </div>
       </div>

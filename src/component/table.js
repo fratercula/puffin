@@ -99,7 +99,7 @@ export default class extends Component {
       columns[i].dataIndex = columns[i].key
 
       const { render } = columns[i]
-      if (render) {
+      if (render && typeof render !== 'function') {
         columns[i].render = (text, record, index) => {
           const rest = textParser(render, { text, record, index })
           return (

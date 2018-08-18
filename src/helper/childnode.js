@@ -14,21 +14,42 @@ function ChildNode(node) {
   const propsChild = {}
   const PropsChildNode = {}
 
+  /* eslint-disable react/destructuring-assignment */
   Object.keys(props).forEach((key) => {
+    const current = props[key]
     const {
       node: propsNode,
       type: propsType,
-    } = props[key] // eslint-disable-line
+    } = current
 
     if (propsNode || propsType) {
-      propsChild[key] = props[key]
+      propsChild[key] = current
       delete props[key]
+    }
+
+    if (Array.isArray(current)) {
+      const {
+        node: propsArrayNode,
+        type: propsArrayType,
+      } = current[0]
+
+      if (propsArrayNode || propsArrayType) {
+        propsChild[key] = current
+        delete props[key]
+      }
     }
   })
 
   Object.keys(propsChild).forEach((key) => {
     const current = propsChild[key]
     const { variable } = current
+
+    if (Array.isArray(current)) {
+      PropsChildNode[key] = current.map((item, i) => (
+        <ChildNode {...item} key={i} />
+      ))
+      return
+    }
 
     if (!variable) {
       PropsChildNode[key] = (

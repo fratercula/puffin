@@ -9,7 +9,11 @@ export default function (type) {
       return components[key[0]]
     }
 
-    return components[key[0]][key[1]]
+    if (key.length === 2) {
+      return components[key[0]][key[1]]
+    }
+
+    return components[key[0]][key[1]][key[2]]
   }
 
   if (antd[key[0]]) {
@@ -17,7 +21,11 @@ export default function (type) {
       return antd[key[0]]
     }
 
-    return antd[key[0]][key[1]]
+    if (key.length === 2) {
+      return antd[key[0]][key[1]]
+    }
+
+    return antd[key[0]][key[1]][key[2]]
   }
 
   window.console.error(`Component: \`${type}\` was no found`)

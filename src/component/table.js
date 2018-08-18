@@ -34,6 +34,13 @@ export default class extends Component {
     }
   }
 
+  componentWillReceiveProps({ api }) {
+    if (api) {
+      this.setState({ error: '' })
+      this.fetch({ url: api })
+    }
+  }
+
   onChange = ({ current }, filters, { field, order }) => {
     const { pagination: prev } = this.state
     const { api: url } = this.props

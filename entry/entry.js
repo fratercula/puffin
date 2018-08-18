@@ -1,4 +1,4 @@
-import Puffin from '../src'
+import puffin from '../src'
 import '../src/index.less'
 
-export default Puffin
+export default puffin

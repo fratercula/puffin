@@ -44,8 +44,8 @@ module.exports = {
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
   externals: dev ? {} : {
-    react: umd ? 'React' : 'commonjs React',
-    'react-dom': umd ? 'ReactDOM' : 'commonjs ReactDOM',
+    react: umd ? 'React' : 'commonjs react',
+    'react-dom': umd ? 'ReactDOM' : 'commonjs reactDom',
     antd: umd ? 'antd' : 'commonjs antd',
   },
 }

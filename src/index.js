@@ -82,7 +82,7 @@ export default class extends Component {
     }
 
     return (
-      <Row style={{ width: '100%', height: '100%' }}>
+      <Row className="puffin">
         {
           JSON.parse(JSON.stringify(schema)).map((item, i) => {
             const { components = [], props = {} } = item

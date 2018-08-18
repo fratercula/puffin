@@ -15,7 +15,8 @@
     "start": "NODE_ENV=development webpack-dev-server --hot --inline",
     "build:umd": "NODE_ENV=production webpack --hide-modules --progress --colors",
     "build:commonjs": "NODE_ENV=commonjs webpack --hide-modules --progress --colors",
-    "build": "npm run build:umd && npm run build:commonjs",
+    "build:demo": "cp -r entry/mock dock/mock && NODE_ENV=demo webpack --hide-modules --progress --colors",
+    "build": "npm run build:umd && npm run build:commonjs && npm run build:demo",
     "lint": "eslint ./src --fix"
   },
   "repository": {

@@ -23,7 +23,11 @@ function PuffinTabs({
             tab,
             ...childRest
           } = props
-          const childProps = { ...item, props: childRest }
+          const childProps = {
+            ...item,
+            node: 'div',
+            props: childRest,
+          }
 
           return (
             <Tabs.TabPane

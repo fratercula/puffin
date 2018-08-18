@@ -1,9 +1,11 @@
 export default {
   type: 'Timeline',
   props: {
+    style: {
+      marginTop: 30,
+    },
     items: [
       {
-        node: 'p',
         text: 'Create a services site 2015-09-01',
         props: {
           dot: {
@@ -15,7 +17,6 @@ export default {
         },
       },
       {
-        node: 'div',
         text: 'Solve initial network problems 2015-09-01',
         props: {
           dot: {
@@ -36,7 +37,6 @@ export default {
         },
       },
       {
-        node: 'div',
         props: {
           color: 'red',
         },

@@ -3,11 +3,17 @@ import PropTypes from 'prop-types'
 import { Collapse } from 'antd'
 import ChildNode from '../helper/childnode'
 
-function PuffinCollapse({ defaultActiveKey, accordion, items }) {
+function PuffinCollapse({
+  defaultActiveKey,
+  accordion,
+  items,
+  ...otherProps
+}) {
   return (
     <Collapse
       defaultActiveKey={defaultActiveKey.map(n => n.toString())}
       accordion={accordion}
+      {...otherProps}
     >
       {
         items.map((item, i) => {
@@ -18,7 +24,11 @@ function PuffinCollapse({ defaultActiveKey, accordion, items }) {
             showArrow,
             ...rest
           } = props
-          const childProps = { ...item, props: rest }
+          const childProps = {
+            ...item,
+            props: rest,
+            node: 'div',
+          }
 
           return (
             <Collapse.Panel

@@ -2,6 +2,9 @@
   "c": 0,
   "m": "",
   "d": {
+    "style": {
+      "marginTop": 10
+    },
     "columns": [
       {
         "title": "Full Name",
@@ -64,7 +67,7 @@
         "address": "London Park no. 3"
       }
     ],
-    "bordered": false,
+    "bordered": true,
     "size": "middle",
     "pagination": {
       "total": 100,

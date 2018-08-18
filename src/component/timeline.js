@@ -3,14 +3,23 @@ import PropTypes from 'prop-types'
 import { Timeline } from 'antd'
 import ChildNode from '../helper/childnode'
 
-function PuffinTimeline({ pending, mode, items }) {
+function PuffinTimeline({
+  pending,
+  mode,
+  items,
+  ...otherProps
+}) {
   return (
-    <Timeline pending={pending} mode={mode}>
+    <Timeline {...otherProps} pending={pending} mode={mode}>
       {
         items.map((item, i) => {
           const { props = {} } = item
           const { dot, color, ...rest } = props
-          const childProps = { ...item, props: rest }
+          const childProps = {
+            ...item,
+            props: rest,
+            node: 'div',
+          }
 
           return (
             <Timeline.Item

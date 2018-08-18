@@ -1,11 +1,13 @@
 export default {
   type: 'Collapse',
   props: {
+    style: {
+      marginTop: 15,
+    },
     defaultActiveKey: [0, 2],
     accordion: false,
     items: [
       {
-        node: 'div',
         props: {
           header: {
             text: 'This is panel header 1',
@@ -26,7 +28,6 @@ export default {
         ],
       },
       {
-        node: 'div',
         props: {
           header: {
             text: 'This is panel header 2',
@@ -35,7 +36,6 @@ export default {
         },
       },
       {
-        node: 'div',
         props: {
           header: {
             text: 'This is panel header 1',

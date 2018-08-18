@@ -2,6 +2,9 @@ export default {
   type: 'Card',
   props: {
     title: 'Card title',
+    style: {
+      marginTop: 15,
+    },
   },
   children: [
     {

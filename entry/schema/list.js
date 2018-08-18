@@ -2,8 +2,9 @@ export default {
   type: 'List',
   props: {
     style: {
-      background: '#fff',
+      marginTop: 15,
     },
+    bordered: true,
     itemLayout: 'horizontal',
     dataSource: [
       { title: 'Ant Design Title 1' },

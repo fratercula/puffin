@@ -1,9 +1,13 @@
 export default {
   type: 'Table',
   props: {
+    style: {
+      marginTop: 15,
+      border: '1px solid #eee',
+    },
     pagination: false,
     scroll: {
-      x: 1000,
+      x: 800,
       y: 200,
     },
     columns: [
@@ -28,17 +32,17 @@ export default {
       },
       {
         title: 'Age',
-        width: 200,
+        width: 100,
         key: 'age',
       },
       {
         title: 'Gender',
-        width: 200,
+        width: 100,
         key: 'gender',
       },
       {
         title: 'Address',
-        width: 200,
+        width: 100,
         key: 'address',
       },
     ],

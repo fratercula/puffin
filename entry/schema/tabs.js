@@ -2,8 +2,9 @@ export default {
   type: 'Tabs',
   props: {
     style: {
-      background: '#fff',
+      marginTop: 15,
     },
+    type: 'card',
     defaultActiveKey: 1,
     tabBarExtraContent: {
       type: 'Tooltip',
@@ -19,7 +20,6 @@ export default {
     },
     items: [
       {
-        node: 'div',
         props: {
           tab: {
             text: 'Tab 1',
@@ -44,7 +44,6 @@ export default {
         ],
       },
       {
-        node: 'div',
         props: {
           tab: {
             text: 'Tab 2',

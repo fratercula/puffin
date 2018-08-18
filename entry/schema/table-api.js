@@ -11,7 +11,7 @@ export default {
     {
       type: 'Table',
       props: {
-        api: 'http://127.0.0.1:2333/table.json',
+        api: '/mock/table.json',
       },
     },
   ],

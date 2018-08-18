@@ -36,7 +36,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: ['style-loader?sourceMap', 'css-loader?sourceMap', 'less-loader?sourceMap'],
       },
-    ]
+    ],
   },
 
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',

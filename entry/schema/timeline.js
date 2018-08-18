@@ -2,7 +2,7 @@ export default {
   type: 'Timeline',
   props: {
     style: {
-      marginTop: 30,
+      marginTop: 80,
     },
     items: [
       {

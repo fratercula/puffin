@@ -22,33 +22,43 @@ export default class extends Component {
   }
 
   state = {
-    loading: true,
+    loading: false,
     error: false,
     schema: [], // eslint-disable-line
   }
 
   componentDidMount() {
-    const { api: url } = this.props
+    this.fetch(this.props.api)
+  }
 
-    if (!url) {
-      this.setState({ loading: false })
-      return
-    }
-
-    fetch({ url })
-      .then(({ c, m, d: schema }) => {
-        if (c !== 0) {
-          return this.onError(m || 'Fetch Error')
-        }
-        // eslint-disable-next-line
-        return this.setState({ loading: false, schema })
-      })
-      .catch(err => this.onError(err.message || 'Fetch Error'))
+  componentWillReceiveProps({ api }) {
+    this.fetch(api)
   }
 
   onError = (error) => {
     this.setState({ error: true, loading: false })
     message.error(error, 10)
+  }
+
+  fetch = (url) => {
+    if (!url) {
+      return
+    }
+
+    this.setState({ loading: true })
+
+    fetch({ url })
+      .then(({ c, m, d: schema }) => {
+        if (c !== 0) {
+          this.onError(m || 'Fetch Error')
+          return
+        }
+        setTimeout(() => {
+          // eslint-disable-next-line
+          this.setState({ loading: false, schema })
+        }, 1000)
+      })
+      .catch(err => this.onError(err.message || 'Fetch Error'))
   }
 
   render() {
@@ -74,7 +84,7 @@ export default class extends Component {
     return (
       <Row style={{ width: '100%', height: '100%' }}>
         {
-          schema.map((item, i) => {
+          JSON.parse(JSON.stringify(schema)).map((item, i) => {
             const { components = [], props = {} } = item
 
             return (

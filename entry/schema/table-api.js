@@ -11,7 +11,7 @@ export default {
     {
       type: 'Table',
       props: {
-        api: '/mock/table.json',
+        api: './mock/table.json',
       },
     },
   ],

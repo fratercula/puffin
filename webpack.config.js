@@ -1,15 +1,17 @@
 const { NODE_ENV } = process.env
 const dev = NODE_ENV === 'development'
+const umd = NODE_ENV === 'production'
 
 module.exports = {
-  mode: NODE_ENV,
+  mode: dev ? 'development' : 'production',
 
-  entry: dev ? './entry/index.js' : './entry/umd.js',
+  entry: dev ? './entry/index.js' : './entry/entry.js',
 
   output: dev ? { filename: 'puffin.js' } : {
     library: 'puffin',
-    libraryTarget: 'umd',
+    libraryTarget: umd ? 'umd' : 'commonjs2',
     filename: 'puffin.js',
+    path: `${__dirname}/${umd ? 'dist' : 'lib'}`,
   },
 
   resolve: {
@@ -42,8 +44,8 @@ module.exports = {
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
   externals: dev ? {} : {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    antd: 'antd',
+    react: umd ? 'React' : 'commonjs React',
+    'react-dom': umd ? 'ReactDOM' : 'commonjs ReactDOM',
+    antd: umd ? 'antd' : 'commonjs antd',
   },
 }

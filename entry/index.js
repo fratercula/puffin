@@ -3,22 +3,22 @@ import { render } from 'react-dom'
 import { Button } from 'antd'
 import Editor from './editor'
 import Puffin from '../src'
+import clone from '../src/helper/clone'
 import schemaData from './schema'
-import '../src/index.less'
-import './index.less'
+import style from './index.less'
 
-class Main extends Component {
+class Entry extends Component {
   state = {
     useApi: false,
-    schema: JSON.parse(JSON.stringify(schemaData)),
+    schema: clone(schemaData),
   }
 
   render() {
     const { useApi, schema } = this.state
 
     return (
-      <div className="main">
-        <div className="control">
+      <div className={style.main}>
+        <div className={style.control}>
           <Button.Group>
             <Button
               onClick={() => this.setState({ useApi: true })}
@@ -35,10 +35,10 @@ class Main extends Component {
             style={{ visibility: useApi ? 'hidden' : 'visible' }}
             value={schema}
             onChange={v => this.setState({ schema: v })}
-            onReset={() => this.setState({ schema: JSON.parse(JSON.stringify(schemaData)) })}
+            onReset={() => this.setState({ schema: clone(schemaData) })}
           />
         </div>
-        <div className="component">
+        <div className={style.component}>
           {
             useApi ? <Puffin api="./mock/api.json" /> : <Puffin schema={schema} />
           }
@@ -48,4 +48,4 @@ class Main extends Component {
   }
 }
 
-render(<Main />, document.getElementById('root'))
+render(<Entry />, document.getElementById('root'))

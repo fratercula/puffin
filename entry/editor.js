@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Editor from 'jsoneditor-for-react'
 import { Drawer, Button } from 'antd'
+import style from './index.less'
 
 export default class extends Component {
   static propTypes = {
@@ -39,7 +40,7 @@ export default class extends Component {
         </Button>
         <Drawer
           title={(
-            <div className="drawer-title">
+            <div className={style.title}>
               <div>JSON schema</div>
               <Button onClick={onReset} type="danger">Reset</Button>
             </div>

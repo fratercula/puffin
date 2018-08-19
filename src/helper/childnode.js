@@ -14,7 +14,6 @@ function ChildNode(node) {
   const propsChild = {}
   const PropsChildNode = {}
 
-  /* eslint-disable react/destructuring-assignment */
   Object.keys(props).forEach((key) => {
     const current = props[key]
     const {

@@ -9,6 +9,8 @@ import {
 } from 'antd'
 import ChildNode from './helper/childnode'
 import fetch from './helper/fetcher'
+import clone from './helper/clone'
+import style from './index.less'
 
 export default class extends Component {
   static propTypes = {
@@ -82,9 +84,9 @@ export default class extends Component {
     }
 
     return (
-      <Row className="puffin">
+      <Row className={style.puffin}>
         {
-          JSON.parse(JSON.stringify(schema)).map((item, i) => {
+          clone(schema).map((item, i) => {
             const { components = [], props = {} } = item
 
             return (

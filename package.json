@@ -14,7 +14,7 @@
   "scripts": {
     "start": "NODE_ENV=dev webpack-dev-server --hot --inline",
     "build:umd": "NODE_ENV=umd webpack --hide-modules --progress --colors",
-    "docs": "rm -rf docs/mock && mkdir docs/mock && cp -r entry/mock docs",
+    "docs": "rm -rf docs && mkdir docs && mkdir docs/mock && cp -r entry/mock docs",
     "build:commonjs": "NODE_ENV=commonjs webpack --hide-modules --progress --colors",
     "build:demo": "npm run docs && NODE_ENV=demo webpack --hide-modules --progress --colors",
     "build": "npm run build:umd && npm run build:commonjs && npm run build:demo",

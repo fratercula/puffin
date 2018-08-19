@@ -84,7 +84,7 @@ if (mode === 'umd' || mode === 'commonjs') {
 
 if (mode === 'demo') {
   base.output = {
-    filename: '[name].[chunkhash:8].js',
+    filename: 'index.[chunkhash:8].js',
     path: `${__dirname}/docs`,
   }
 }

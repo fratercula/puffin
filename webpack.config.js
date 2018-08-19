@@ -16,8 +16,8 @@ const template = (type) => {
 </head>
 <body style="width: 100vw; height: 100vh;">
   <div style="height: 100%;" id="root"></div>
-</body>
 ${type === 'demo' ? cdn : ''}
+</body>
 </html>
   `
 }
@@ -94,7 +94,7 @@ if (mode === 'umd') {
     library: 'puffin',
     libraryTarget: 'umd',
     filename: 'index.js',
-    path: `${__dirname}/dist}`,
+    path: `${__dirname}/dist`,
   }
 }
 

@@ -9,11 +9,11 @@
     "lib"
   ],
   "unpkg": {
-    "default": "dist/puffin.js"
+    "default": "dist/index.js"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --hot --inline",
-    "build:umd": "NODE_ENV=production webpack --hide-modules --progress --colors",
+    "start": "NODE_ENV=dev webpack-dev-server --hot --inline",
+    "build:umd": "NODE_ENV=umd webpack --hide-modules --progress --colors",
     "docs": "rm -rf docs/mock && mkdir docs/mock && cp -r entry/mock docs",
     "build:commonjs": "NODE_ENV=commonjs webpack --hide-modules --progress --colors",
     "build:demo": "npm run docs && NODE_ENV=demo webpack --hide-modules --progress --colors",
@@ -52,6 +52,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "html-webpack-plugin": "^3.2.0",
     "jsoneditor-for-react": "0.0.1",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",

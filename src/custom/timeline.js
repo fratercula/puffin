@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Timeline } from 'antd'
-import ChildNode from '../helper/childnode'
+import Recomponent from '../recomponent'
 
 function PuffinTimeline({
   pending,
@@ -25,9 +25,9 @@ function PuffinTimeline({
             <Timeline.Item
               key={i}
               color={color}
-              dot={dot ? (<ChildNode {...dot} />) : undefined}
+              dot={dot ? (<Recomponent {...dot} />) : undefined}
             >
-              <ChildNode {...childProps} />
+              <Recomponent {...childProps} />
             </Timeline.Item>
           )
         })

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Collapse } from 'antd'
-import ChildNode from '../helper/childnode'
+import Recomponent from '../recomponent'
 
 function PuffinCollapse({
   defaultActiveKey,
@@ -35,9 +35,9 @@ function PuffinCollapse({
               key={i}
               showArrow={showArrow}
               disabled={disabled}
-              header={(<ChildNode {...header} />)}
+              header={(<Recomponent {...header} />)}
             >
-              <ChildNode {...childProps} />
+              <Recomponent {...childProps} />
             </Collapse.Panel>
           )
         })

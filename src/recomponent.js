@@ -99,7 +99,7 @@ function Recomponent(node) {
 
   // first letter uppercase, it is Antd component
   if (Node.charCodeAt(0) < 90) {
-    const Component = component(Node)
+    const Component = component.get(Node)
 
     if (!Component) {
       return null

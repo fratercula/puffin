@@ -1,33 +1,52 @@
-import * as antd from 'antd'
-import components from '../component'
-
-export default function (type) {
-  const key = type.split('.')
-
-  if (components[key[0]]) {
-    if (key.length === 1) {
-      return components[key[0]]
-    }
-
-    if (key.length === 2) {
-      return components[key[0]][key[1]]
-    }
-
-    return components[key[0]][key[1]][key[2]]
+class Component {
+  constructor() {
+    this.custom = {}
+    this.builtin = {}
   }
 
-  if (antd[key[0]]) {
-    if (key.length === 1) {
-      return antd[key[0]]
+  register(type, component) {
+    if (this.custom[type]) {
+      window.console.error(`Component: \`${type}\` exists`)
+      return
     }
-
-    if (key.length === 2) {
-      return antd[key[0]][key[1]]
-    }
-
-    return antd[key[0]][key[1]][key[2]]
+    this.custom[type] = component
   }
 
-  window.console.error(`Component: \`${type}\` was no found`)
-  return null
+  set library(components) {
+    this.builtin = components
+  }
+
+  get(type) {
+    const { custom, builtin } = this
+    const key = type.split('.')
+
+    if (custom[key[0]]) {
+      if (key.length === 1) {
+        return custom[key[0]]
+      }
+
+      if (key.length === 2) {
+        return custom[key[0]][key[1]]
+      }
+
+      return custom[key[0]][key[1]][key[2]]
+    }
+
+    if (builtin[key[0]]) {
+      if (key.length === 1) {
+        return builtin[key[0]]
+      }
+
+      if (key.length === 2) {
+        return builtin[key[0]][key[1]]
+      }
+
+      return builtin[key[0]][key[1]][key[2]]
+    }
+
+    window.console.error(`Component: \`${type}\` was no found`)
+    return null
+  }
 }
+
+export default new Component()

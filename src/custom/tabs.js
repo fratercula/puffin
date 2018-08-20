@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Tabs } from 'antd'
-import ChildNode from '../helper/childnode'
+import Recomponent from '../recomponent'
 
 function PuffinTabs({
   defaultActiveKey,
@@ -33,9 +33,9 @@ function PuffinTabs({
             <Tabs.TabPane
               key={i}
               disabled={disabled}
-              tab={(<ChildNode {...tab} />)}
+              tab={(<Recomponent {...tab} />)}
             >
-              <ChildNode {...childProps} />
+              <Recomponent {...childProps} />
             </Tabs.TabPane>
           )
         })

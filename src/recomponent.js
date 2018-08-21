@@ -55,7 +55,7 @@ function Recomponent(node) {
     }
   }
 
-  // first letter uppercase, it is Antd component
+  // first letter uppercase, it is React component
   if (Node.charCodeAt(0) < 90) {
     const Component = component.get(Node)
 
@@ -74,11 +74,7 @@ function Recomponent(node) {
       || typeof children === 'boolean'
       || typeof children === 'number'
     ) {
-      return (
-        <Component {...props}>
-          {children}
-        </Component>
-      )
+      return (<Component {...props}>{children}</Component>)
     }
 
     if (Array.isArray(children)) {

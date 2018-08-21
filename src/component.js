@@ -14,6 +14,7 @@ class Component {
 
   set library(components) {
     this.builtin = components
+    this.custom = {}
   }
 
   get(type) {

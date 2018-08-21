@@ -1,73 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import component from './component'
-import literal from './helper/literal'
 import clone from './helper/clone'
+import Reprops from './helper/props'
 
 function Recomponent(node) {
   const {
     node: Node,
-    props,
+    props: originProps,
     children,
   } = clone(node)
-  const nodeProps = {}
-  const subNode = {}
+
+  let props = {}
 
   if (!Node) {
     return children || null
   }
 
-  Object.keys(props).forEach((key) => {
-    const current = props[key]
-
-    if (current.node) {
-      nodeProps[key] = current
-      delete props[key]
-    }
-
-    if (Array.isArray(current) && current[0].node) {
-      nodeProps[key] = current
-      delete props[key]
-    }
-  })
-
-  Object.keys(nodeProps).forEach((key) => {
-    const current = nodeProps[key]
-    const { variable } = current
-
-    if (Array.isArray(current)) {
-      subNode[key] = current.map((item, i) => (
-        <Recomponent {...item} key={i} />
-      ))
-      return
-    }
-
-    if (!variable) {
-      subNode[key] = (<Recomponent {...current} />)
-      return
-    }
-
-    const expression = `
-      "use strict";
-
-      var literal = this.literal
-      var React = this.React
-      var node = this.node
-      var Recomponent = this.Recomponent
-      var params = literal(node, { ${variable.join()} })
-      return React.createElement(Recomponent, params)
-    `
-
-    subNode[key] = new Function(...variable, expression).bind({
-      literal,
-      React,
-      node: current,
-      Recomponent,
-    })
-  })
-
   // first letter lowercase, it is HTML component
   if (Node.charCodeAt(0) > 96) {
+    Object.keys(originProps).forEach((key) => {
+      const current = originProps[key]
+      if (!Array.isArray(current)) {
+        props[key] = current
+      }
+    })
+
     if (typeof children === 'undefined') {
       return (<Node {...props} />)
     }
@@ -105,8 +63,10 @@ function Recomponent(node) {
       return null
     }
 
+    props = Reprops(originProps, Recomponent)
+
     if (typeof children === 'undefined') {
-      return (<Component {...subNode} {...props} />)
+      return (<Component {...props} />)
     }
 
     if (
@@ -115,7 +75,7 @@ function Recomponent(node) {
       || typeof children === 'number'
     ) {
       return (
-        <Component {...subNode} {...props}>
+        <Component {...props}>
           {children}
         </Component>
       )
@@ -123,7 +83,7 @@ function Recomponent(node) {
 
     if (Array.isArray(children)) {
       return (
-        <Component {...subNode} {...props}>
+        <Component {...props}>
           {
             children.map((item, i) => (
               <Recomponent key={i} {...item} />

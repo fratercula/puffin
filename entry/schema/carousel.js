@@ -1,5 +1,5 @@
 export default {
-  type: 'Carousel',
+  node: 'Carousel',
   props: {
     autoplay: false,
   },
@@ -19,11 +19,11 @@ export default {
           node: 'div',
           children: [
             {
-              type: 'Button',
+              node: 'Button',
               props: {
                 type: 'danger',
               },
-              text: 'Button',
+              children: 'React Button',
             },
           ],
         },
@@ -39,17 +39,15 @@ export default {
           lineHeight: '200px',
         },
       },
-      children: [
-        {
-          node: 'h3',
-          text: 'text',
-          props: {
-            style: {
-              color: '#fff',
-            },
+      children: {
+        node: 'h3',
+        children: 'HTML text',
+        props: {
+          style: {
+            color: '#fff',
           },
         },
-      ],
+      },
     },
   ],
 }

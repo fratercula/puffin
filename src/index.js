@@ -8,7 +8,7 @@ import {
   Tabs,
 } from './custom'
 
-component.library = antd
+component.library(antd)
 component.register('Collapse', Collapse)
 component.register('Timeline', Timeline)
 component.register('Tabs', Tabs)

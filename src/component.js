@@ -12,7 +12,7 @@ class Component {
     this.custom[type] = component
   }
 
-  set library(components) {
+  library(components) {
     this.builtin = components
     this.custom = {}
   }

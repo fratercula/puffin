@@ -1,5 +1,5 @@
 export default {
-  type: 'List',
+  node: 'List',
   props: {
     style: {
       marginTop: 15,
@@ -14,13 +14,13 @@ export default {
     ],
     renderItem: {
       variable: ['item'],
-      type: 'List.Item',
+      node: 'List.Item',
       children: [
         {
-          type: 'List.Item.Meta',
+          node: 'List.Item.Meta',
           props: {
             avatar: {
-              type: 'Avatar',
+              node: 'Avatar',
               props: {
                 src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
               },
@@ -30,7 +30,7 @@ export default {
               props: {
                 href: 'https://ant.design',
               },
-              text: '${item.title}',
+              children: '${item.title}',
             },
             description: 'Ant Design, a design language for background applications',
           },

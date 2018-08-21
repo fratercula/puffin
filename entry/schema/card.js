@@ -1,5 +1,5 @@
 export default {
-  type: 'Card',
+  node: 'Card',
   props: {
     title: 'Card title',
     style: {
@@ -8,66 +8,66 @@ export default {
   },
   children: [
     {
-      type: 'Card',
+      node: 'Card',
       props: {
         title: 'inner title',
         type: 'inner',
       },
       children: [
         {
-          type: 'Card.Grid',
+          node: 'Card.Grid',
           props: {
             style: {
               width: '25%',
               textAlign: 'center',
             },
           },
-          text: 'Grid',
+          children: 'Grid',
         },
         {
-          type: 'Card.Grid',
+          node: 'Card.Grid',
           props: {
             style: {
               width: '25%',
               textAlign: 'center',
             },
           },
-          text: 'Grid',
+          children: 'Grid',
         },
         {
-          type: 'Card.Grid',
+          node: 'Card.Grid',
           props: {
             style: {
               width: '25%',
               textAlign: 'center',
             },
           },
-          text: 'Grid',
+          children: 'Grid',
         },
         {
-          type: 'Card.Grid',
+          node: 'Card.Grid',
           props: {
             style: {
               width: '25%',
               textAlign: 'center',
             },
           },
-          text: 'Grid',
+          children: 'Grid',
         },
         {
-          type: 'Card.Grid',
+          node: 'Card.Grid',
           props: {
             style: {
               width: '25%',
               textAlign: 'center',
             },
           },
-          text: 'Grid',
+          children: 'Grid',
         },
       ],
     },
     {
-      type: 'Card',
+      node: 'Card',
       props: {
         style: {
           marginTop: 16,
@@ -83,19 +83,19 @@ export default {
         },
         actions: [
           {
-            type: 'Icon',
+            node: 'Icon',
             props: {
               type: 'setting',
             },
           },
           {
-            type: 'Icon',
+            node: 'Icon',
             props: {
               type: 'edit',
             },
           },
           {
-            type: 'Icon',
+            node: 'Icon',
             props: {
               type: 'ellipsis',
             },
@@ -104,7 +104,7 @@ export default {
       },
       children: [
         {
-          type: 'Card.Meta',
+          node: 'Card.Meta',
           props: {
             title: 'Europe Street beat',
             description: 'description',

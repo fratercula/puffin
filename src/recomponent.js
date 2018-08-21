@@ -51,7 +51,11 @@ function Recomponent(node) {
     }
 
     if (typeof children === 'object') {
-      return (<Recomponent {...children} />)
+      return (
+        <Node {...props}>
+          <Recomponent {...children} />
+        </Node>
+      )
     }
   }
 
@@ -90,7 +94,11 @@ function Recomponent(node) {
     }
 
     if (typeof children === 'object') {
-      return (<Recomponent {...children} />)
+      return (
+        <Component {...props}>
+          <Recomponent {...children} />
+        </Component>
+      )
     }
   }
 
@@ -100,13 +108,7 @@ function Recomponent(node) {
 Recomponent.propTypes = {
   node: PropTypes.string,
   props: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.Array,
-    PropTypes.Object,
-    PropTypes.bool,
-  ]),
+  children: PropTypes.any,
 }
 
 Recomponent.defaultProps = {

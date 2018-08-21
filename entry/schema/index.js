@@ -19,10 +19,10 @@ export default [
       },
     },
     components: [
-      tableApi,
+      // tableApi,
       carousel,
-      tabs,
-      list,
+      // tabs,
+      // list,
     ],
   },
   {
@@ -35,10 +35,10 @@ export default [
       },
     },
     components: [
-      timeline,
-      collapse,
-      table,
-      card,
+      // timeline,
+      // collapse,
+      // table,
+      // card,
     ],
   },
 ]

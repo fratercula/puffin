@@ -27,6 +27,18 @@ export default {
             },
           ],
         },
+        {
+          node: 'img',
+          props: {
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+            width: 200,
+            height: 'auto',
+            style: {
+              position: 'absolute',
+              top: 0,
+            },
+          },
+        },
       ],
     },
     {

@@ -26,7 +26,7 @@ export default {
           },
           children: {
             node: 'em',
-            children: '${text}, ${record.age}, ${index}',
+            children: '${text > 0 ? \'????\' : \'TTTT\'}, ${record.age}, ${index}',
           },
         },
       },

@@ -102,7 +102,7 @@ function Recomponent(node) {
     }
   }
 
-  return null
+  return children || null
 }
 
 Recomponent.propTypes = {

@@ -6,11 +6,7 @@ function Reprops(props, Recomponent) {
   const context = clone(props)
 
   if (context.node && context.variable) {
-    return func({
-      Recomponent,
-      variable: context.variable,
-      node: context,
-    })
+    return func({ Recomponent, node: context })
   }
 
   if (context.node) {
@@ -26,11 +22,7 @@ function Reprops(props, Recomponent) {
     }
 
     if (current.node && current.variable) {
-      context[key] = func({
-        Recomponent,
-        variable: current.variable,
-        node: current,
-      })
+      context[key] = func({ Recomponent, node: current })
       return
     }
 

@@ -5,7 +5,6 @@ export default function (params) {
   const {
     node,
     Recomponent,
-    variable,
   } = params
 
   const expression = `
@@ -15,7 +14,7 @@ export default function (params) {
     var React = this.React
     var node = this.node
     var Recomponent = this.Recomponent
-    var params = literal(node, { ${variable.join()} })
+    var params = literal(node, { ${node.variable.join()} })
     return React.createElement(Recomponent, params)
   `
 
@@ -26,5 +25,5 @@ export default function (params) {
     Recomponent,
   }
 
-  return new Function(...variable, expression).bind(context)
+  return new Function(...node.variable, expression).bind(context)
 }

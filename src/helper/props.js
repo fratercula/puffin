@@ -9,7 +9,7 @@ function Reprops(props, Recomponent) {
     return func({
       Recomponent,
       variable: context.variable,
-      context,
+      node: context,
     })
   }
 
@@ -29,7 +29,7 @@ function Reprops(props, Recomponent) {
       context[key] = func({
         Recomponent,
         variable: current.variable,
-        current,
+        node: current,
       })
       return
     }

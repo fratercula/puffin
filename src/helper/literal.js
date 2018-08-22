@@ -14,6 +14,6 @@ export function tplls(literals, variable) {
   return new Function(...keys, `return \`${literals}\``)(...values)
 }
 
-export default function textParser(node, variable) {
+export default function (node, variable) {
   return JSON.parse(tplls(JSON.stringify(node), variable))
 }

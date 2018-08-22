@@ -20,9 +20,9 @@ export default [
     },
     components: [
       // tableApi,
-      // carousel,
+      carousel,
       // tabs,
-      // list,
+      list,
     ],
   },
   {

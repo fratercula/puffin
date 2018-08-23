@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import component from './component'
 import clone from './helper/clone'
-import Reprops from './helper/props'
+import Reprops from './reprops'
 
 function Recomponent(node) {
   const {
@@ -111,12 +111,14 @@ function Recomponent(node) {
 }
 
 Recomponent.propTypes = {
+  parse: PropTypes.bool,
   node: PropTypes.string,
   props: PropTypes.object,
   children: PropTypes.any,
 }
 
 Recomponent.defaultProps = {
+  parse: true,
   node: '',
   props: {},
   children: undefined,

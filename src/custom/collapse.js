@@ -3,32 +3,29 @@ import PropTypes from 'prop-types'
 import { Collapse } from 'antd'
 import Recomponent from '../recomponent'
 
-function PuffinCollapse({
-  defaultActiveKey,
-  accordion,
-  items,
-  ...otherProps
-}) {
+function PuffinCollapse({ props: defaultProps, children }) {
+  const {
+    defaultActiveKey,
+    accordion,
+    ...rest
+  } = defaultProps
+
   return (
     <Collapse
-      defaultActiveKey={defaultActiveKey.map(n => n.toString())}
+      defaultActiveKey={(defaultActiveKey || []).map(n => n.toString())}
       accordion={accordion}
-      {...otherProps}
+      {...rest}
     >
       {
-        items.map((item, i) => {
-          const { props = {} } = item
+        children.map((item, i) => {
+          const { props: childProps = {} } = item
           const {
             disabled,
             header,
             showArrow,
-            ...rest
-          } = props
-          const childProps = {
-            ...item,
-            props: rest,
-            node: 'div',
-          }
+            ...childRest
+          } = childProps
+          const node = { ...item, props: childRest, node: 'div' }
 
           return (
             <Collapse.Panel
@@ -37,7 +34,7 @@ function PuffinCollapse({
               disabled={disabled}
               header={(<Recomponent {...header} />)}
             >
-              <Recomponent {...childProps} />
+              <Recomponent {...node} />
             </Collapse.Panel>
           )
         })
@@ -47,18 +44,13 @@ function PuffinCollapse({
 }
 
 PuffinCollapse.propTypes = {
-  defaultActiveKey: PropTypes.array,
-  accordion: PropTypes.bool,
-  items: PropTypes.array,
+  props: PropTypes.object,
+  children: PropTypes.any,
 }
 
 PuffinCollapse.defaultProps = {
-  defaultActiveKey: [0],
-  accordion: false,
-  items: [],
+  props: {},
+  children: undefined,
 }
 
-export default function (args) {
-  console.log(args)
-  return null
-}
+export default PuffinCollapse

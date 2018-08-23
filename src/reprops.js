@@ -1,6 +1,6 @@
 import React from 'react'
-import clone from './clone'
-import func from './func'
+import clone from './helper/clone'
+import func from './helper/func'
 
 function Reprops(props, Recomponent) {
   const context = clone(props)

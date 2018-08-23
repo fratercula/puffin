@@ -3,7 +3,7 @@ export default {
   node: 'Collapse',
   props: {
     style: {
-      marginTop: 15,
+      marginTop: 60,
     },
     defaultActiveKey: [0, 2],
     accordion: false,
@@ -56,15 +56,13 @@ export default {
           props: {
             count: 1,
           },
-          children: [
-            {
-              node: 'Avatar',
-              props: {
-                shape: 'square',
-                icon: 'user',
-              },
+          children: {
+            node: 'Avatar',
+            props: {
+              shape: 'square',
+              icon: 'user',
             },
-          ],
+          },
         },
       ],
     },

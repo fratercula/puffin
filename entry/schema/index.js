@@ -36,8 +36,8 @@ export default [
     },
     components: [
       // timeline,
-      // collapse,
-      table,
+      collapse,
+      // table,
       // card,
     ],
   },

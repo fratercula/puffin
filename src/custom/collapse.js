@@ -58,4 +58,7 @@ PuffinCollapse.defaultProps = {
   items: [],
 }
 
-export default PuffinCollapse
+export default function (args) {
+  console.log(args)
+  return null
+}

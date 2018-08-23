@@ -6,6 +6,7 @@ import Reprops from './helper/props'
 
 function Recomponent(node) {
   const {
+    parse,
     node: Node,
     props: originProps,
     children,
@@ -65,6 +66,10 @@ function Recomponent(node) {
 
     if (!Component) {
       return null
+    }
+
+    if (!parse) {
+      return (<Component {...clone(node)} />)
     }
 
     props = Reprops(originProps, Recomponent)

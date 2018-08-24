@@ -1,5 +1,4 @@
 export default {
-  parse: false,
   node: 'Collapse',
   props: {
     style: {

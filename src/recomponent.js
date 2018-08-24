@@ -6,7 +6,6 @@ import Reprops from './reprops'
 
 function Recomponent(node) {
   const {
-    parse,
     node: Node,
     props: originProps,
     children,
@@ -68,7 +67,13 @@ function Recomponent(node) {
       return null
     }
 
-    if (!parse) {
+    let parse = true
+
+    try {
+      ({ parse } = new Component({}))
+    } catch (e) { /* ignore */ }
+
+    if (parse === false) {
       return (<Component {...clone(node)} />)
     }
 
@@ -111,14 +116,12 @@ function Recomponent(node) {
 }
 
 Recomponent.propTypes = {
-  parse: PropTypes.bool,
   node: PropTypes.string,
   props: PropTypes.object,
   children: PropTypes.any,
 }
 
 Recomponent.defaultProps = {
-  parse: true,
   node: '',
   props: {},
   children: undefined,

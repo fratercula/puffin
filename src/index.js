@@ -1,6 +1,7 @@
 import * as antd from 'antd'
 import Puffin from './puffin'
 import Recomponent from './recomponent'
+import Reprops from './reprops'
 import component from './component'
 import {
   Collapse,
@@ -17,4 +18,4 @@ Puffin.library = component.library.bind(component)
 Puffin.register = component.register.bind(component)
 
 export default Puffin
-export { Recomponent }
+export { Recomponent, Reprops }

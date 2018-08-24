@@ -21,6 +21,7 @@ export default [
       carousel,
       tabs,
       list,
+      card,
     ],
   },
   {
@@ -36,7 +37,6 @@ export default [
       timeline,
       collapse,
       table,
-      card,
     ],
   },
 ]

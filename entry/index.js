@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import Editor from './editor'
 import Puffin from '../src'
+import PuffinTable from './puffin-table'
 import clone from '../src/helper/clone'
 import schemaData from './schema'
 import style from './index.less'
+
+Puffin.register('PuffinTable', PuffinTable)
 
 class Entry extends Component {
   state = {

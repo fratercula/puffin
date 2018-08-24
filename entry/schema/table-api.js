@@ -1,17 +1,27 @@
 export default {
   node: 'div',
+  props: {
+    style: {
+      marginBottom: 10,
+      padding: 10,
+      background: '#eee',
+    },
+  },
   children: [
     {
-      type: 'Alert',
+      node: 'Alert',
       props: {
-        type: 'warning',
-        message: 'You can not change the table `Page`, because of the JSON data is specific',
+        style: {
+          marginBottom: 10,
+        },
+        type: 'info',
+        message: 'A custom table component, table data from API',
       },
     },
     {
-      type: 'Table',
+      node: 'PuffinTable',
       props: {
-        api: './mock/table.json',
+        api: './schema/table.json',
       },
     },
   ],

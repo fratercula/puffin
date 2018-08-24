@@ -5,6 +5,7 @@ import list from './list'
 import table from './table'
 import tabs from './tabs'
 import timeline from './timeline'
+import tableAPI from './table-api'
 
 export default [
   {
@@ -18,8 +19,8 @@ export default [
       },
     },
     components: [
+      tableAPI,
       carousel,
-      tabs,
       list,
       card,
     ],
@@ -35,6 +36,7 @@ export default [
     },
     components: [
       timeline,
+      tabs,
       collapse,
       table,
     ],

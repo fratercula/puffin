@@ -2,7 +2,7 @@ export default {
   node: 'Collapse',
   props: {
     style: {
-      marginTop: 60,
+      marginTop: 10,
     },
     defaultActiveKey: [0, 2],
     accordion: false,

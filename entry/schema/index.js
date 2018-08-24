@@ -1,4 +1,3 @@
-import tableApi from './table-api'
 import card from './card'
 import carousel from './carousel'
 import collapse from './collapse'
@@ -19,9 +18,8 @@ export default [
       },
     },
     components: [
-      // tableApi,
       carousel,
-      // tabs,
+      tabs,
       list,
     ],
   },
@@ -35,7 +33,7 @@ export default [
       },
     },
     components: [
-      // timeline,
+      timeline,
       collapse,
       table,
       card,

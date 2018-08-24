@@ -1,5 +1,5 @@
 export default {
-  type: 'Tabs',
+  node: 'Tabs',
   props: {
     style: {
       marginTop: 15,
@@ -7,66 +7,68 @@ export default {
     type: 'card',
     defaultActiveKey: 1,
     tabBarExtraContent: {
-      type: 'Tooltip',
+      node: 'Tooltip',
       props: {
         title: 'Prompt Text',
       },
       children: [
         {
-          type: 'Button',
-          text: 'Button',
+          node: 'Button',
+          children: 'Button',
         },
       ],
     },
-    items: [
-      {
-        props: {
-          tab: {
-            text: 'Tab 1',
-          },
-          style: {
-            padding: 10,
-          },
-        },
-        children: [
-          {
-            node: 'p',
-            text: 'Content of Tab Pane 0',
-          },
-          {
-            node: 'p',
-            text: 'Content of Tab Pane 0',
-          },
-          {
-            node: 'p',
-            text: 'Content of Tab Pane 0',
-          },
-        ],
-      },
-      {
-        props: {
-          tab: {
-            text: 'Tab 2',
-          },
-          style: {
-            padding: 10,
-          },
-        },
-        children: [
-          {
-            node: 'p',
-            text: 'Content of Tab Pane ',
-          },
-          {
-            node: 'p',
-            text: 'Content of Tab Pane 1',
-          },
-          {
-            node: 'p',
-            text: 'Content of Tab Pane 0',
-          },
-        ],
-      },
-    ],
   },
+  children: [
+    {
+      node: 'Tabs.TabPane',
+      props: {
+        tab: {
+          children: 'Tab 1',
+        },
+        style: {
+          padding: 10,
+        },
+      },
+      children: [
+        {
+          node: 'p',
+          children: 'Content of Tab Pane 0',
+        },
+        {
+          node: 'p',
+          children: 'Content of Tab Pane 1',
+        },
+        {
+          node: 'p',
+          children: 'Content of Tab Pane 2',
+        },
+      ],
+    },
+    {
+      node: 'Tabs.TabPane',
+      props: {
+        tab: {
+          children: 'Tab 2',
+        },
+        style: {
+          padding: 10,
+        },
+      },
+      children: [
+        {
+          node: 'p',
+          children: 'Content of Tab Pane ',
+        },
+        {
+          node: 'p',
+          children: 'Content of Tab Pane 1',
+        },
+        {
+          node: 'p',
+          children: 'Content of Tab Pane 0',
+        },
+      ],
+    },
+  ],
 }

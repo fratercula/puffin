@@ -8,12 +8,12 @@ export default class extends Component {
 
   static propTypes = {
     props: PropTypes.object,
-    children: PropTypes.any,
+    children: PropTypes.array,
   }
 
   static defaultProps = {
     props: {},
-    children: undefined,
+    children: [],
   }
 
   render() {

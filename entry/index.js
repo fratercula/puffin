@@ -1,13 +1,23 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import * as antd from 'antd'
+import puffin, { Recomponent } from '../src'
 import Editor from './editor'
-import Puffin from '../src'
-import PuffinTable from './puffin-table'
 import clone from '../src/helper/clone'
 import schemaData from './schema'
 import style from './index.less'
+import {
+  TableAPI,
+  Tabs,
+  Timeline,
+  Collapse,
+} from './custom'
 
-Puffin.register('PuffinTable', PuffinTable)
+puffin.library(antd)
+puffin.register('TableAPI', TableAPI)
+puffin.register('Tabs', Tabs)
+puffin.register('Timeline', Timeline)
+puffin.register('Collapse', Collapse)
 
 class Entry extends Component {
   state = {
@@ -27,7 +37,7 @@ class Entry extends Component {
           />
         </div>
         <div className={style.component}>
-          <Puffin className={style.puffin} schema={schema} />
+          <Recomponent {...schema} />
         </div>
       </div>
     )

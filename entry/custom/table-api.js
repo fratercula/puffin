@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'antd'
-import { Recomponent } from '../src'
+import { Recomponent } from '../../src'
 
 export default class extends Component {
   static propTypes = {

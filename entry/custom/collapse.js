@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Tabs } from 'antd'
-import Recomponent from '../recomponent'
+import { Collapse } from 'antd'
+import { Recomponent } from '../../src'
 
 export default class extends Component {
   parse = false
@@ -20,34 +20,40 @@ export default class extends Component {
     const { props, children } = this.props
     const {
       defaultActiveKey,
-      tabBarExtraContent,
+      accordion,
       ...rest
     } = props
 
     return (
-      <Tabs
-        defaultActiveKey={defaultActiveKey.toString()}
-        tabBarExtraContent={(<Recomponent {...tabBarExtraContent} />)}
+      <Collapse
+        defaultActiveKey={(defaultActiveKey || []).map(n => n.toString())}
+        accordion={accordion}
         {...rest}
       >
         {
           children.map((item, i) => {
             const { props: childProps = {} } = item
-            const { disabled, tab, ...childRest } = childProps
-            const node = { ...item, node: 'div', props: childRest }
+            const {
+              disabled,
+              header,
+              showArrow,
+              ...childRest
+            } = childProps
+            const node = { ...item, props: childRest, node: 'div' }
 
             return (
-              <Tabs.TabPane
+              <Collapse.Panel
                 key={i}
+                showArrow={showArrow}
                 disabled={disabled}
-                tab={(<Recomponent {...tab} />)}
+                header={(<Recomponent {...header} />)}
               >
                 <Recomponent {...node} />
-              </Tabs.TabPane>
+              </Collapse.Panel>
             )
           })
         }
-      </Tabs>
+      </Collapse>
     )
   }
 }

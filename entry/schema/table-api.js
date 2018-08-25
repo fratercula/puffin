@@ -19,7 +19,7 @@ export default {
       },
     },
     {
-      node: 'PuffinTable',
+      node: 'TableAPI',
       props: {
         api: './schema/table.json',
       },

@@ -7,38 +7,49 @@ import tabs from './tabs'
 import timeline from './timeline'
 import tableAPI from './table-api'
 
-export default [
-  {
-    props: {
-      span: 14,
-      style: {
-        borderRight: '1px solid #eee',
-        overflowY: 'auto',
-        padding: 15,
-        height: '100%',
-      },
+export default {
+  node: 'Row',
+  props: {
+    style: {
+      width: '100%',
+      height: '100%',
     },
-    components: [
-      tableAPI,
-      carousel,
-      list,
-      card,
-    ],
   },
-  {
-    props: {
-      span: 10,
-      style: {
-        overflowY: 'auto',
-        padding: 15,
-        height: '100%',
+  children: [
+    {
+      node: 'Col',
+      props: {
+        span: 14,
+        style: {
+          borderRight: '1px solid #eee',
+          overflowY: 'auto',
+          padding: 15,
+          height: '100%',
+        },
       },
+      children: [
+        tableAPI,
+        carousel,
+        list,
+        card,
+      ],
     },
-    components: [
-      timeline,
-      tabs,
-      collapse,
-      table,
-    ],
-  },
-]
+    {
+      node: 'Col',
+      props: {
+        span: 10,
+        style: {
+          overflowY: 'auto',
+          padding: 15,
+          height: '100%',
+        },
+      },
+      children: [
+        timeline,
+        tabs,
+        collapse,
+        table,
+      ],
+    },
+  ],
+}

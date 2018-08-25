@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Timeline } from 'antd'
-import Recomponent from '../recomponent'
+import { Recomponent } from '../../src'
 
 export default class extends Component {
   parse = false

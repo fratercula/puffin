@@ -6,13 +6,13 @@ import style from './index.less'
 
 export default class extends Component {
   static propTypes = {
-    value: PropTypes.array,
+    value: PropTypes.object,
     onChange: PropTypes.func,
     onReset: PropTypes.func,
   }
 
   static defaultProps = {
-    value: [],
+    value: {},
     onChange: () => null,
     onReset: () => null,
   }

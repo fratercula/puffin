@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import * as antd from 'antd'
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-} from '@material-ui/core'
+import * as material from '@material-ui/core'
 import puffin, { Recomponent } from '../src'
 import Editor from './editor'
 import clone from '../src/helper/clone'
@@ -60,14 +53,7 @@ class Entry extends Component {
       puffin.register('Timeline', Timeline)
       puffin.register('Collapse', Collapse)
     } else {
-      puffin.library({
-        Card,
-        CardActions,
-        Button,
-        Typography,
-        CardContent,
-        CardMedia,
-      })
+      puffin.library(material)
     }
   }
 

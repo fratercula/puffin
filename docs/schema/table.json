@@ -1,0 +1,72 @@
+{
+  "style": {
+    "marginTop": 10,
+    "background": "#fff",
+    "padding": 10
+  },
+  "columns": [
+    {
+      "title": "Full Name",
+      "dataIndex": "name",
+      "render": {
+        "variable": ["text", "record", "index"],
+        "node": "div",
+        "props": {
+          "style": {
+            "whiteSpace": "nowrap"
+          }
+        },
+        "children": "text: ${text} age: ${record.age} index: ${index}"
+      }
+    },
+    {
+      "title": "Age",
+      "dataIndex": "age"
+    },
+    {
+      "title": "Gender",
+      "dataIndex": "gender"
+    },
+    {
+      "title": "Address",
+      "dataIndex": "address"
+    }
+  ],
+  "dataSource": [
+    {
+      "key": 0,
+      "name": "Edrward 0",
+      "age": 32,
+      "gender": "male",
+      "address": "London Park no. 0"
+    },
+    {
+      "key": 1,
+      "name": "Edrward 1",
+      "age": 32,
+      "gender": "female",
+      "address": "London Park no. 1"
+    },
+    {
+      "key": 2,
+      "name": "Edrward 2",
+      "age": 32,
+      "gender": "female",
+      "address": "London Park no. 2"
+    },
+    {
+      "key": 3,
+      "name": "Edrward 3",
+      "age": 32,
+      "gender": "female",
+      "address": "London Park no. 3"
+    }
+  ],
+  "bordered": true,
+  "size": "middle",
+  "pagination": {
+    "total": 100,
+    "pageSize": 10,
+    "current": 3
+  }
+}

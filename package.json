@@ -38,6 +38,7 @@
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
+    "@material-ui/core": "^1.5.1",
     "antd": "^3.8.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",

@@ -1,7 +1,7 @@
 export default {
   node: 'Carousel',
   props: {
-    autoplay: false,
+    autoplay: true,
   },
   children: [
     {

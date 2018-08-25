@@ -6,6 +6,7 @@ const template = (type) => {
   <script src="//cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.production.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.production.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/antd/3.8.1/antd.min.js"></script>
+  <script src="//unpkg.com/@material-ui/core/umd/material-ui.production.min.js"></script>
   `
 
   return `<!doctype html>
@@ -79,7 +80,7 @@ if (mode === 'umd' || mode === 'demo') {
 }
 
 if (mode === 'umd' || mode === 'commonjs') {
-  base.entry = './entry/entry.js'
+  base.entry = './src'
 }
 
 if (mode === 'demo') {
@@ -114,11 +115,19 @@ if (mode === 'commonjs') {
   base.devtool = false
 }
 
-if (mode === 'umd' || mode === 'demo') {
+if (mode === 'umd') {
+  base.externals = {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  }
+}
+
+if (mode === 'demo') {
   base.externals = {
     react: 'React',
     'react-dom': 'ReactDOM',
     antd: 'antd',
+    '@material-ui/core': 'window["material-ui"]',
   }
 }
 
@@ -126,7 +135,6 @@ if (mode === 'commonjs') {
   base.externals = {
     react: 'commonjs react',
     'react-dom': 'commonjs reactDom',
-    antd: 'commonjs antd',
   }
 }
 

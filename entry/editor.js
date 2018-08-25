@@ -36,7 +36,7 @@ export default class extends Component {
           type="primary"
           onClick={() => this.setState({ visible: true })}
         >
-          Edit JSON Schema
+          JSON Schema
         </Button>
         <Drawer
           title={(

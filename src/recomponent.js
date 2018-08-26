@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import component from './component'
 import clone from './helper/clone'
-import Reprops from './reprops'
+import Reprops from './reprops' // eslint-disable-line
 
 function Recomponent(node) {
   const {
@@ -67,13 +67,7 @@ function Recomponent(node) {
       return null
     }
 
-    let parse = true
-
-    try {
-      ({ parse } = new Component({}))
-    } catch (e) { /* ignore */ }
-
-    if (parse === false) {
+    if (Component.parse === false) {
       return (<Component {...clone(node)} />)
     }
 

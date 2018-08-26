@@ -1,8 +1,9 @@
 import React from 'react'
 import clone from './helper/clone'
 import func from './helper/func'
+import Recomponent from './recomponent' // eslint-disable-line
 
-function Reprops(props, Recomponent) {
+function Reprops(props) {
   const context = clone(props)
 
   if (context.node && context.variable) {

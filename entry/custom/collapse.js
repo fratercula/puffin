@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Collapse } from 'antd'
 import { Recomponent } from '../../src'
 
-export default class extends Component {
+class PuffinCollapse extends Component {
   parse = false
 
   static propTypes = {
@@ -57,3 +57,7 @@ export default class extends Component {
     )
   }
 }
+
+PuffinCollapse.parse = false
+
+export default PuffinCollapse

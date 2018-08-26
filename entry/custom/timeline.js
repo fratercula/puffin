@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Timeline } from 'antd'
 import { Recomponent } from '../../src'
 
-export default class extends Component {
+class PuffinTimeline extends Component {
   parse = false
 
   static propTypes = {
@@ -47,3 +47,7 @@ export default class extends Component {
     )
   }
 }
+
+PuffinTimeline.parse = false
+
+export default PuffinTimeline

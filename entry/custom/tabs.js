@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Tabs } from 'antd'
 import { Recomponent } from '../../src'
 
-export default class extends Component {
+class PuffinTabs extends Component {
   parse = false
 
   static propTypes = {
@@ -51,3 +51,7 @@ export default class extends Component {
     )
   }
 }
+
+PuffinTabs.parse = false
+
+export default PuffinTabs

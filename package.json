@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "puffin",
+  "name": "@fratercula/puffin",
   "version": "0.1.0",
   "description": "Puffin",
   "main": "lib/index.js",

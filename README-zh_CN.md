@@ -4,7 +4,7 @@ Puffin 是一个基于 React 的组件，通过 Puffin，你可以使用 JSON Sc
 
 一个简单例子：
 
-以下 json schema
+以下 json schema
 
 ```json
 {
@@ -237,9 +237,9 @@ Puffin 解析 JSON Schema 为页面结构，JSON Schema 需要满足一定条件
 
 ### 主要字段说明
 
-| 字段 | 类型 | 必须 | 说明 |
+| 字段 | 类型 | 必须 | 说明 |
 | --- |---| ---| --- |
-| node | string | 是 | 声明当前节点，当首字母大写会解析成第三方组件，首字母小写则解析成 HTML DOM |
+| node | string | 是 | 声明当前节点，当首字母大写会解析成第三方组件，首字母小写则解析成 HTML DOM |
 | props | object | 否 | 声明当前节点属性，允许传入 React 节点或者函数，具体看 API 说明 |
 | children | 任意 | 否 | 声明当前节点的子节点，可以递归传入节点结构 |
 

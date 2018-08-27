@@ -378,6 +378,10 @@ export default PuffinTimeline
 
 经过处理后，Timeline 组件就可以用 JSON Schema 描述出来了
 
+### 含有状态（redux）组件
+
+例如 Antd 的 Menu 组件，是含有 redux 状态的，这时候 Puffin 在解析时候会对传入 props 进行 JSON clone，就有可能报 `Converting circular structure to JSON` 错误。所以也需要进行重新处理这个组件
+
 ### JSON 默认解析
 
 默认情况下，Puffin 会对 JSON Schema 进行解析，解析成 ReactNode 以及函数

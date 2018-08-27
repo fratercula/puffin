@@ -4,12 +4,12 @@ import component from './component'
 import clone from './helper/clone'
 import Reprops from './reprops' // eslint-disable-line
 
-function Recomponent(node) {
+function Recomponent(params) {
   const {
     node: Node,
     props: originProps,
     children,
-  } = clone(node)
+  } = clone(params)
 
   let props = {}
 
@@ -68,10 +68,10 @@ function Recomponent(node) {
     }
 
     if (Component.parse === false) {
-      return (<Component {...clone(node)} />)
+      return (<Component {...clone(params)} />)
     }
 
-    props = Reprops(originProps, Recomponent)
+    props = Reprops(originProps)
 
     if (typeof children === 'undefined') {
       return (<Component {...props} />)

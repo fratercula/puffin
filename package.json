@@ -2,6 +2,11 @@
   "name": "@fratercula/puffin",
   "version": "0.1.2",
   "description": "JSON Schema describes Web Page",
+  "keywords": [
+    "JSON Schema",
+    "component",
+    "react"
+  ],
   "main": "lib/index.js",
   "files": [
     "dist",

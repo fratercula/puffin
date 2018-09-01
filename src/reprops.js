@@ -3,7 +3,7 @@ import clone from './helper/clone'
 import func from './helper/func'
 import Recomponent from './recomponent' // eslint-disable-line
 
-function Reprops(props) {
+function Reprops(props, unique) {
   const context = clone(props)
 
   if (context.node && context.variable) {
@@ -11,14 +11,14 @@ function Reprops(props) {
   }
 
   if (context.node) {
-    return (<Recomponent {...context} />)
+    return (<Recomponent key={unique} {...context} />)
   }
 
   Object.keys(context).forEach((key) => {
     const current = context[key]
 
     if (Array.isArray(current)) {
-      context[key] = current.map(item => Reprops(item, Recomponent))
+      context[key] = current.map((item, i) => Reprops(item, i))
       return
     }
 

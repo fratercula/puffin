@@ -1,7 +1,7 @@
 {
   "name": "@fratercula/puffin",
-  "version": "0.1.1",
-  "description": "Puffin",
+  "version": "0.1.2",
+  "description": "JSON Schema describes Web Page",
   "main": "lib/index.js",
   "files": [
     "dist",
@@ -28,8 +28,7 @@
   },
   "homepage": "https://github.com/fratercula/puffin#readme",
   "peerDependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react": ">=16.4.1"
   },
   "dependencies": {
     "prop-types": "^15.6.2"

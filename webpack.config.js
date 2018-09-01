@@ -80,7 +80,7 @@ if (mode === 'umd' || mode === 'demo') {
 }
 
 if (mode === 'umd' || mode === 'commonjs') {
-  base.entry = './src'
+  base.entry = './src/index.js'
 }
 
 if (mode === 'demo') {
@@ -116,10 +116,7 @@ if (mode === 'commonjs') {
 }
 
 if (mode === 'umd') {
-  base.externals = {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  }
+  base.externals = { react: 'React' }
 }
 
 if (mode === 'demo') {
@@ -132,10 +129,7 @@ if (mode === 'demo') {
 }
 
 if (mode === 'commonjs') {
-  base.externals = {
-    react: 'commonjs react',
-    'react-dom': 'commonjs reactDom',
-  }
+  base.externals = { react: 'commonjs react' }
 }
 
 if (mode === 'dev') {

@@ -2,7 +2,7 @@ export default {
   node: 'div',
   props: {
     style: {
-      marginBottom: 10,
+      marginTop: 10,
       padding: 10,
       background: '#eee',
     },

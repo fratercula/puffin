@@ -57,6 +57,15 @@ class Entry extends Component {
     }
   }
 
+  on = (type, params) => {
+    const schema = getSchema(this.type)
+
+    if (type === 'afterChange') {
+      schema.children[0].children[0].props.message = `You click the ${params[0] === 0 ? 'first' : 'second'} page`
+      this.setState({ schema })
+    }
+  }
+
   render() {
     const { schema } = this.state
 
@@ -74,7 +83,7 @@ class Entry extends Component {
           <Editor value={schema} onChange={this.onChange} onReset={this.onReset} />
         </div>
         <div className={style.component}>
-          <Recomponent {...schema} />
+          <Recomponent on={this.on} {...schema} />
         </div>
       </div>
     )

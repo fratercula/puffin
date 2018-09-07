@@ -28,8 +28,18 @@ export default {
         },
       },
       children: [
-        tableAPI,
+        {
+          node: 'Alert',
+          props: {
+            style: {
+              marginBottom: 10,
+            },
+            type: 'info',
+            message: 'Change this text by click the Carousel component below',
+          },
+        },
         carousel,
+        tableAPI,
         list,
         card,
       ],

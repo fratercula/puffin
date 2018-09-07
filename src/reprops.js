@@ -5,6 +5,7 @@ import Recomponent from './recomponent' // eslint-disable-line
 
 function Reprops(props, unique) {
   const context = clone(props)
+  const { on } = props
 
   if (context.node && context.variable) {
     return func({ Recomponent, node: context })
@@ -29,6 +30,17 @@ function Reprops(props, unique) {
 
     if (current.node) {
       context[key] = (<Recomponent {...current} />)
+      return
+    }
+
+    if (current.emitKey && on) {
+      const expression = `
+        var on = this.on
+        if (typeof on === 'function') {
+          on('${current.emitKey}', arguments)
+        }
+      `
+      context[key] = new Function(expression).bind({ on })
     }
   })
 

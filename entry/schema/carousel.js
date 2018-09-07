@@ -1,7 +1,10 @@
 export default {
   node: 'Carousel',
   props: {
-    autoplay: true,
+    autoplay: false,
+    afterChange: {
+      emitKey: 'afterChange',
+    },
   },
   children: [
     {

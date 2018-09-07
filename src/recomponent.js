@@ -4,12 +4,19 @@ import component from './component'
 import clone from './helper/clone'
 import Reprops from './reprops' // eslint-disable-line
 
+let TRIGGER // global event trigger
+
 function Recomponent(params) {
   const {
     node: Node,
     props: originProps,
     children,
   } = clone(params)
+  const { on } = params
+
+  if (on) {
+    TRIGGER = on
+  }
 
   let props = {}
 
@@ -21,7 +28,7 @@ function Recomponent(params) {
   if (Node.charCodeAt(0) > 96) {
     Object.keys(originProps).forEach((key) => {
       const current = originProps[key]
-      if (!Array.isArray(current)) {
+      if (!Array.isArray(current) && typeof current !== 'function') {
         props[key] = current
       }
     })
@@ -71,7 +78,7 @@ function Recomponent(params) {
       return (<Component {...clone(params)} />)
     }
 
-    props = Reprops(originProps)
+    props = Reprops({ ...originProps, on: TRIGGER })
 
     if (typeof children === 'undefined') {
       return (<Component {...props} />)

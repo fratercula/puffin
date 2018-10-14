@@ -231,6 +231,42 @@ const parsed = Reprops(props)
 // }
 ```
 
+支持函数调用，需要组件支持事件回调
+
+```js
+import { Reprops, Recomponent } from '@fratercula/puffin'
+import React, { Component } from 'react'
+
+export default class extends Component {
+  state = {
+    schema: {
+      node: 'Carousel',
+      props: {
+        autoplay: false,
+        afterChange: {
+          emitKey: 'afterChange', // 设置当前事件触发的类型名称
+        },
+      },
+      children: [...],
+    }
+  }
+
+  on = (type, params) => {
+    const { schema } = this.state
+    if (type === 'afterChange') {
+      schema = ...
+      this.setState({ schema })
+    }
+  }
+
+  render() {
+    return (
+      <Recomponent on={this.on} {...this.state.schema} />
+    )
+  }
+}
+```
+
 ## JSON Schema
 
 Puffin 解析 JSON Schema 为页面结构，JSON Schema 需要满足一定条件

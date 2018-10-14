@@ -79,7 +79,7 @@ if (mode === 'umd' || mode === 'demo') {
   base.mode = 'production'
 }
 
-if (mode === 'umd' || mode === 'commonjs') {
+if (mode === 'umd') {
   base.entry = './src/index.js'
 }
 
@@ -99,24 +99,12 @@ if (mode === 'umd') {
   }
 }
 
-if (mode === 'commonjs') {
-  base.output = {
-    libraryTarget: 'commonjs2',
-    filename: 'index.js',
-    path: `${__dirname}/lib`,
-  }
-}
-
 if (mode === 'umd' || mode === 'demo') {
   base.devtool = 'source-map'
 }
 
-if (mode === 'commonjs') {
-  base.devtool = false
-}
-
 if (mode === 'umd') {
-  base.externals = { react: 'React' }
+  base.externals = { react: 'react' }
 }
 
 if (mode === 'demo') {
@@ -126,10 +114,6 @@ if (mode === 'demo') {
     antd: 'antd',
     '@material-ui/core': 'window["material-ui"]',
   }
-}
-
-if (mode === 'commonjs') {
-  base.externals = { react: 'commonjs react' }
 }
 
 if (mode === 'dev') {

@@ -1,13 +1,13 @@
 {
   "name": "@fratercula/puffin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JSON Schema describes Web Page",
   "keywords": [
     "JSON Schema",
     "component",
     "react"
   ],
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],

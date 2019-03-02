@@ -1,67 +1,36 @@
 {
   "name": "@fratercula/puffin",
-  "version": "0.1.5",
-  "description": "JSON Schema describes Web Page",
+  "version": "0.2.0",
+  "description": "JSON Schema describes component",
   "keywords": [
     "JSON Schema",
     "component",
     "react"
   ],
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "files": [
-    "dist"
+    "lib"
   ],
-  "unpkg": "dist/index.js",
+  "unpkg": "lib/index.js",
   "scripts": {
-    "start": "NODE_ENV=dev webpack-dev-server --hot --inline",
-    "build:umd": "NODE_ENV=umd webpack --hide-modules --progress --colors",
-    "docs": "rm -rf docs && mkdir docs && mkdir docs/schema && cp entry/schema/table.json docs/schema",
-    "build:demo": "npm run docs && NODE_ENV=demo webpack --hide-modules --progress --colors",
-    "build": "npm run build:umd && npm run build:demo",
-    "lint": "eslint ./src --fix"
+    "start": "falco -c -m entry/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fratercula/puffin.git"
   },
-  "author": "LoeiFy@gmail.com",
+  "author": "LoeiFy <LoeiFy@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fratercula/puffin/issues"
   },
   "homepage": "https://github.com/fratercula/puffin#readme",
   "peerDependencies": {
-    "react": ">=16.4.1"
+    "react": "*"
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "*"
   },
   "devDependencies": {
-    "@material-ui/core": "^1.5.1",
-    "antd": "^3.8.1",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^1.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "html-webpack-plugin": "^3.2.0",
-    "jsoneditor-for-react": "0.0.1",
-    "less": "^3.8.0",
-    "less-loader": "^4.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.16.3",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
   }
 }

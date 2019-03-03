@@ -1,11 +1,5 @@
-import card from './card'
 import carousel from './carousel'
-import collapse from './collapse'
-import list from './list'
-import table from './table'
 import tabs from './tabs'
-import timeline from './timeline'
-import tableAPI from './table-api'
 
 export default {
   node: 'Row',
@@ -39,9 +33,6 @@ export default {
           },
         },
         carousel,
-        tableAPI,
-        list,
-        card,
       ],
     },
     {
@@ -55,10 +46,7 @@ export default {
         },
       },
       children: [
-        timeline,
         tabs,
-        collapse,
-        table,
       ],
     },
   ],

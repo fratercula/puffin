@@ -1,5 +1,3 @@
-const { NODE_ENV } = process.env
-
 module.exports = {
   externals: [
     {
@@ -17,13 +15,15 @@ module.exports = {
       urls: 'https://cdn.staticfile.org/react-dom/16.8.2/umd/react-dom.production.min.js',
       // urls: 'https://cdn.staticfile.org/react-dom/16.8.2/umd/react-dom.development.js',
     },
+    {
+      name: 'antd',
+      root: 'antd',
+      commonjs2: 'antd',
+      commonjs: 'antd',
+      amd: 'antd',
+      urls: ['https://cdn.staticfile.org/moment.js/2.24.0/moment.min.js', 'https://cdn.staticfile.org/antd/3.13.6/antd-with-locales.min.js'],
+    },
   ],
   registry: 'https://registry.npm.taobao.org',
-  mode: NODE_ENV ? 'production' : 'development',
-  output: NODE_ENV === 'prod'
-    ? {
-      library: 'nycticorax',
-      libraryTarget: 'umd',
-    }
-    : {},
+  mode: 'development',
 }

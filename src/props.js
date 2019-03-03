@@ -1,18 +1,17 @@
 import React from 'react'
 import clone from './helper/clone'
 import func from './helper/func'
-import Recomponent from './recomponent' // eslint-disable-line
+import C from './component'
 
 function Reprops(props, unique) {
   const context = clone(props)
-  const { on } = props
 
   if (context.node && context.variable) {
-    return func({ Recomponent, node: context })
+    return func({ C, node: context })
   }
 
   if (context.node) {
-    return (<Recomponent key={unique} {...context} />)
+    return (<C key={unique} {...context} />)
   }
 
   Object.keys(context).forEach((key) => {
@@ -24,23 +23,12 @@ function Reprops(props, unique) {
     }
 
     if (current.node && current.variable) {
-      context[key] = func({ Recomponent, node: current })
+      context[key] = func({ C, node: current })
       return
     }
 
     if (current.node) {
-      context[key] = (<Recomponent {...current} />)
-      return
-    }
-
-    if (current.emitKey && on) {
-      const expression = `
-        var on = this.on
-        if (typeof on === 'function') {
-          on('${current.emitKey}', arguments)
-        }
-      `
-      context[key] = new Function(expression).bind({ on })
+      context[key] = (<C {...current} />)
     }
   })
 

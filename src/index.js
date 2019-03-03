@@ -1,6 +1,4 @@
-import Recomponent from './recomponent'
-import Reprops from './reprops'
-import component from './component'
+import C from './component'
+import p from './props'
 
-export default component
-export { Recomponent, Reprops }
+export { C, p }

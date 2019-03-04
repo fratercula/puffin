@@ -4,7 +4,7 @@ import literal from './literal'
 export default function (params) {
   const {
     node,
-    Recomponent,
+    C,
   } = params
 
   const expression = `
@@ -13,17 +13,17 @@ export default function (params) {
     var literal = this.literal
     var React = this.React
     var node = this.node
-    var Recomponent = this.Recomponent
-    var params = literal(node, { ${node.variable.join()} })
-    return React.createElement(Recomponent, params)
+    var C = this.C
+    var params = literal(node, { ${node.arguments.join()} })
+    return React.createElement(C, params)
   `
 
   const context = {
     literal,
     React,
     node,
-    Recomponent,
+    C,
   }
 
-  return new Function(...node.variable, expression).bind(context)
+  return new Function(...node.arguments, expression).bind(context)
 }

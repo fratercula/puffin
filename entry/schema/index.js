@@ -1,4 +1,6 @@
 import html from './html'
+import table from './table'
+import carousel from './carousel'
 
 export default {
   node: 'Row',
@@ -14,6 +16,7 @@ export default {
       },
       children: [
         html,
+        carousel,
       ],
     },
     {
@@ -25,7 +28,7 @@ export default {
         },
       },
       children: [
-
+        table,
       ],
     },
   ],

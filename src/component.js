@@ -4,7 +4,7 @@ import clone from './helper/clone'
 import p from './props'
 
 function C(params) {
-  const { components, ...rest } = params
+  const { components, onChange, ...rest } = params
   const { node, props, children } = clone(rest)
 
   let properties = {}
@@ -39,7 +39,12 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C key={i} {...item} components={components} />
+              <C
+                key={i}
+                {...item}
+                components={components}
+                onChange={onChange}
+              />
             ))
           }
         </Node>
@@ -49,7 +54,11 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C {...children} components={components} />
+          <C
+            {...children}
+            components={components}
+            onChange={onChange}
+          />
         </Node>
       )
     }
@@ -75,7 +84,7 @@ function C(params) {
       return (<Node {...clone(params)} />)
     }
 
-    properties = p(props)
+    properties = p({ ...props, onChange })
 
     if (typeof children === 'undefined') {
       return (<Node {...properties} />)
@@ -94,7 +103,12 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C key={i} {...item} components={components} />
+              <C
+                key={i}
+                {...item}
+                components={components}
+                onChange={onChange}
+              />
             ))
           }
         </Node>
@@ -104,7 +118,11 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C {...children} components={components} />
+          <C
+            {...children}
+            components={components}
+            onChange={onChange}
+          />
         </Node>
       )
     }
@@ -117,11 +135,13 @@ C.propTypes = {
   node: PropTypes.string,
   props: PropTypes.object,
   components: PropTypes.object,
+  onChange: PropTypes.func,
   children: PropTypes.any,
 }
 
 C.defaultProps = {
   node: '',
+  onChange: () => null,
   components: {},
   props: {},
 }

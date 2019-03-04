@@ -3,10 +3,11 @@ import clone from './helper/clone'
 import func from './helper/func'
 import C from './component'
 
-function Reprops(props, unique) {
-  const context = clone(props)
+function p(props, unique) {
+  const { onChange, ...rest } = props
+  const context = clone(rest)
 
-  if (context.node && context.variable) {
+  if (context.node && context.arguments) {
     return func({ C, node: context })
   }
 
@@ -18,21 +19,27 @@ function Reprops(props, unique) {
     const current = context[key]
 
     if (Array.isArray(current)) {
-      context[key] = current.map((item, i) => Reprops(item, i))
+      context[key] = current.map((item, i) => p(item, i))
       return
     }
 
-    if (current.node && current.variable) {
+    if (current.node && current.arguments) {
       context[key] = func({ C, node: current })
       return
     }
 
     if (current.node) {
       context[key] = (<C {...current} />)
+      return
+    }
+
+    if (current.function) {
+      const expression = `this.onChange('${current.function}', arguments)`
+      context[key] = new Function(expression).bind({ onChange })
     }
   })
 
   return context
 }
 
-export default Reprops
+export default p

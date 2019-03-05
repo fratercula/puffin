@@ -1,6 +1,7 @@
 import html from './html'
 import table from './table'
 import carousel from './carousel'
+import tab from './tab'
 
 export default {
   node: 'Row',
@@ -17,6 +18,7 @@ export default {
       children: [
         html,
         carousel,
+        tab,
       ],
     },
     {
@@ -29,6 +31,10 @@ export default {
       },
       children: [
         table,
+        {
+          node: 'Custom',
+          children: ['a', 'b'],
+        },
       ],
     },
   ],

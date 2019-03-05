@@ -71,12 +71,11 @@ function C(params) {
     try {
       Node = eval(`components${keys}`)
     } catch (e) {
-      if (window.console) {
-        window.console.error(`Component '${Node}' not exist`)
-      }
+      window.console.error(`Component '${node}' not exist`)
     }
 
     if (!Node) {
+      window.console.error(`Component '${node}' not exist`)
       return null
     }
 

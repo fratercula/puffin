@@ -28,8 +28,8 @@ export default {
                 children: '${index % 2 ? \'SSSS\' : \'TTTT\'}', // eslint-disable-line
               },
               {
-                node: 'span',
-                children: '${record.age}', // eslint-disable-line
+                node: 'em',
+                children: ', ${record.age}', // eslint-disable-line
               },
             ],
           },

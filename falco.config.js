@@ -1,3 +1,16 @@
+const { NODE_ENV } = process.env
+
+const output = {}
+
+if (NODE_ENV === 'docs') {
+  output.filename = 'index.[hash:8].js'
+}
+
+if (NODE_ENV === 'umd') {
+  output.library = 'puffin'
+  output.libraryTarget = 'umd'
+}
+
 module.exports = {
   externals: [
     {
@@ -25,5 +38,6 @@ module.exports = {
     },
   ],
   registry: 'https://registry.npm.taobao.org',
-  mode: 'development',
+  mode: !NODE_ENV ? 'development' : 'production',
+  output,
 }

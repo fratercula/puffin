@@ -2,9 +2,9 @@
 
 JSON Schema describes web component
 
-> a example
+> Example
 
-**in**
+**given**
 
 ```json
 {
@@ -162,7 +162,7 @@ render((
 
 ### Helper
 
-Puffin provides helper function `p` for parse scheam `props`
+Puffin provides helper function `p` for parsing scheam `props`
 
 ```js
 import { p } from '@fratercula/puffin'
@@ -184,16 +184,16 @@ const parsed = p(props)
   {
     style: {
       color: 'red',
-  },
-  tab: (<Icon type="link" />)
-}
+    },
+    tab: (<Icon type="link" />)
+  }
 */
 ```
 
 **basic**
 
 ```js
-// in
+// given
 {
   style: {
     color: 'red',
@@ -202,13 +202,13 @@ const parsed = p(props)
 }
 
 // out
-<xxx style="color: red" href="link/to" />
+<... style="color: red" href="link/to" />
 ```
 
 **React component**
 
 ```js
-// in
+// given
 {
   tab: {
     node: 'Icon',
@@ -219,13 +219,13 @@ const parsed = p(props)
 }
 
 // out
-<xxx tab={(<Icon type="link" />)} />
+<... tab={(<Icon type="link" />)} />
 ```
 
 **function**
 
 ```js
-// in
+// given
 {
   tab: {
     arguments: ['text', 'record'],
@@ -235,7 +235,7 @@ const parsed = p(props)
 }
 
 // out
-<xxx tab={(text, record) => {
+<... tab={(text, record) => {
   return (<div>{`${text}, ${record.name}`}</div>)
 }} />
 ```
@@ -247,7 +247,7 @@ import { C } from '@fratercula/puffin'
 
 <C onChange={(name, args) => console.log(name, args)} />
 
-// in
+// given
 {
   afterChange: {
     function: 'afterChange',
@@ -255,7 +255,7 @@ import { C } from '@fratercula/puffin'
 }
 
 // out
-<xxx afterChange={args => onChange('afterChange', args)} />
+<... afterChange={args => onChange('afterChange', args)} />
 ```
 
 ### Component

@@ -1,7 +1,7 @@
 {
   "name": "@fratercula/puffin",
   "version": "0.2.0",
-  "description": "JSON Schema describes component",
+  "description": "JSON Schema describes web component",
   "keywords": [
     "JSON Schema",
     "component",

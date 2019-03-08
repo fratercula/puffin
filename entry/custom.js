@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  static parse = false
+  static puffinParse = false
 
   render() {
     const { children } = this.props

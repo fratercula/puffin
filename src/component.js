@@ -79,7 +79,7 @@ function C(params) {
       return null
     }
 
-    if (Node.parse === false) {
+    if (Node.puffinParse === false) {
       return (<Node {...clone(params)} />)
     }
 

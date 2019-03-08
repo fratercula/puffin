@@ -45,6 +45,6 @@ Tabs.defaultProps = {
   children: [],
 }
 
-Tabs.parse = false
+Tabs.puffinParse = false
 
 export default Tabs

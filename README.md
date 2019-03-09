@@ -313,6 +313,22 @@ Another.puffinParse = false // not parse, use origin data
 export default { Custom, Another }
 ```
 
+## Development
+
+```bash
+# install `falco` global
+$ npm i @fratercula/falco -g
+
+# start
+$ npm start
+
+# build
+$ npm run build
+
+# lint
+$ npm run lint
+```
+
 ## License
 
 MIT

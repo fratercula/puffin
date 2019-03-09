@@ -16,7 +16,8 @@
     "start": "falco -c -m entry/index.js",
     "docs": "rm -rf docs && NODE_ENV=docs falco -c -o docs -m entry/index.js",
     "umd": "NODE_ENV=umd falco -c -o lib -m src/index.js",
-    "build": "npm run docs && npm run umd"
+    "build": "npm run docs && npm run umd",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

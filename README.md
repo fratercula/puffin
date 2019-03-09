@@ -105,9 +105,7 @@ import * as antd from 'antd'
 const schema = {
   "node": "Carousel", // antd Carousel
   "props": {
-    "afterChange": {
-      "function": 'afterChange',
-    },
+    "afterChange": ":afterChange",
   },
   "children": [
     {
@@ -128,7 +126,7 @@ render((
 ), document.getElementById('root'))
 ```
 
-### Schmea
+### Schema
 
 ```js
 {
@@ -162,7 +160,7 @@ render((
 
 ### Helper
 
-Puffin provides helper function `p` for parsing scheam `props`
+Puffin provides helper function `p` for parsing schema `props`
 
 ```js
 import { p } from '@fratercula/puffin'
@@ -249,9 +247,7 @@ import { C } from '@fratercula/puffin'
 
 // given
 {
-  afterChange: {
-    function: 'afterChange',
-  },
+  afterChange: ':afterChange',
 }
 
 // out

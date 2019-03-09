@@ -33,8 +33,8 @@ function p(props, unique) {
       return
     }
 
-    if (current.function) {
-      const expression = `this.onChange('${current.function}', arguments)`
+    if (typeof current === 'string' && current.match(/^:.{1,}/)) {
+      const expression = `this.onChange('${current.split(':')[1]}', arguments)`
       context[key] = new Function(expression).bind({ onChange })
     }
   })

@@ -2,9 +2,7 @@ export default {
   node: 'Carousel',
   props: {
     autoplay: false,
-    afterChange: {
-      function: 'afterChange',
-    },
+    afterChange: ':afterChange',
   },
   children: [
     {

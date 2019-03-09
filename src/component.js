@@ -4,7 +4,7 @@ import clone from './helper/clone'
 import p from './props'
 
 function C(params) {
-  const { components, onChange, ...rest } = params
+  const { components, onEvent, ...rest } = params
   const { node, props, children } = clone(rest)
 
   let properties = {}
@@ -43,7 +43,7 @@ function C(params) {
                 key={i}
                 {...item}
                 components={components}
-                onChange={onChange}
+                onEvent={onEvent}
               />
             ))
           }
@@ -57,7 +57,7 @@ function C(params) {
           <C
             {...children}
             components={components}
-            onChange={onChange}
+            onEvent={onEvent}
           />
         </Node>
       )
@@ -83,7 +83,7 @@ function C(params) {
       return (<Node {...clone(params)} />)
     }
 
-    properties = p({ ...props, onChange })
+    properties = p({ ...props, onEvent })
 
     if (typeof children === 'undefined') {
       return (<Node {...properties} />)
@@ -106,7 +106,7 @@ function C(params) {
                 key={i}
                 {...item}
                 components={components}
-                onChange={onChange}
+                onEvent={onEvent}
               />
             ))
           }
@@ -120,7 +120,7 @@ function C(params) {
           <C
             {...children}
             components={components}
-            onChange={onChange}
+            onEvent={onEvent}
           />
         </Node>
       )
@@ -134,13 +134,13 @@ C.propTypes = {
   node: PropTypes.string,
   props: PropTypes.object,
   components: PropTypes.object,
-  onChange: PropTypes.func,
+  onEvent: PropTypes.func,
   children: PropTypes.any,
 }
 
 C.defaultProps = {
   node: '',
-  onChange: () => null,
+  onEvent: () => null,
   components: {},
   props: {},
 }

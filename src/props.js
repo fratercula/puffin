@@ -4,7 +4,7 @@ import func from './helper/func'
 import C from './component'
 
 function p(props, unique) {
-  const { onChange, ...rest } = props
+  const { onEvent, ...rest } = props
   const context = clone(rest)
 
   if (context.node && context.arguments) {
@@ -34,8 +34,8 @@ function p(props, unique) {
     }
 
     if (typeof current === 'string' && current.match(/^:.{1,}/)) {
-      const expression = `this.onChange('${current.split(':')[1]}', arguments)`
-      context[key] = new Function(expression).bind({ onChange })
+      const expression = `this.onEvent('${current.split(':')[1]}', arguments)`
+      context[key] = new Function(expression).bind({ onEvent })
     }
   })
 

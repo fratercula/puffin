@@ -11,7 +11,7 @@ function Entry() {
     <C
       {...schema}
       components={{ ...components, Tabs, Custom }}
-      onChange={(...args) => console.log(args)}
+      onEvent={(...args) => console.log(args)}
     />
   )
 }

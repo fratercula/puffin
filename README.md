@@ -105,7 +105,7 @@ import * as antd from 'antd'
 const schema = {
   "node": "Carousel", // antd Carousel
   "props": {
-    "afterChange": ":afterChange",
+    "afterChange": ":afterChange", // :key
   },
   "children": [
     {
@@ -119,7 +119,7 @@ render((
   <C
     {...schema}
     components={antd}
-    onChange={(key, args) => {
+    onEvent={(key, args) => {
       console.log(key, args)
     }}
   />
@@ -243,15 +243,15 @@ const parsed = p(props)
 ```js
 import { C } from '@fratercula/puffin'
 
-<C onChange={(name, args) => console.log(name, args)} />
+<C onEvent={(key, args) => console.log(key, args)} />
 
 // given
 {
-  afterChange: ':afterChange',
+  afterChange: ':afterChange', // :key
 }
 
 // out
-<... afterChange={args => onChange('afterChange', args)} />
+<... afterChange={args => onEvent('afterChange', args)} />
 ```
 
 ### Component

@@ -10,6 +10,7 @@ export default {
       node: 'Tabs.TabPane',
       props: {
         tab: {
+          node: 'Button',
           children: 'Tab 0',
         },
       },

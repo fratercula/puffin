@@ -3,9 +3,20 @@ import PropTypes from 'prop-types'
 import clone from './helper/clone'
 import p from './props'
 
+let components = {} // eslint-disable-line no-unused-vars
+let onEvent = () => null
+
 function C(params) {
-  const { components, onEvent, ...rest } = params
+  const { onEvent: oE, components: cs, ...rest } = params
   const { node, props, children } = clone(rest)
+
+  if (Object.prototype.toString.call(oE) === '[object Function]') {
+    onEvent = oE
+  }
+
+  if (Object.prototype.toString.call(cs) === '[object Object]') {
+    components = cs
+  }
 
   let properties = {}
   let Node = node
@@ -39,12 +50,7 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C
-                key={i}
-                {...item}
-                components={components}
-                onEvent={onEvent}
-              />
+              <C key={i} {...item} />
             ))
           }
         </Node>
@@ -54,11 +60,7 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C
-            {...children}
-            components={components}
-            onEvent={onEvent}
-          />
+          <C {...children} />
         </Node>
       )
     }
@@ -102,12 +104,7 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C
-                key={i}
-                {...item}
-                components={components}
-                onEvent={onEvent}
-              />
+              <C key={i} {...item} />
             ))
           }
         </Node>
@@ -117,11 +114,7 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C
-            {...children}
-            components={components}
-            onEvent={onEvent}
-          />
+          <C {...children} />
         </Node>
       )
     }
@@ -140,8 +133,6 @@ C.propTypes = {
 
 C.defaultProps = {
   node: '',
-  onEvent: () => null,
-  components: {},
   props: {},
 }
 

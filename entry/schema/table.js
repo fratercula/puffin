@@ -42,6 +42,17 @@ export default {
       {
         title: 'Gender',
         dataIndex: 'gender',
+        render: {
+          arguments: ['text'],
+          node: 'div',
+          children: {
+            node: 'Tag',
+            props: {
+              onClick: ':ttt${text}', // eslint-disable-line
+            },
+            children: 'xxx ${text}', // eslint-disable-line
+          },
+        },
       },
       {
         title: 'Address',

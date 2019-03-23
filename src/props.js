@@ -4,15 +4,20 @@ import func from './helper/func'
 import C from './component'
 
 function p(props, unique) {
-  const { onEvent, ...rest } = props
+  const { onEvent, components, ...rest } = props
   const context = clone(rest)
 
   if (context.node && context.arguments) {
-    return func({ C, node: context })
+    return func({
+      C,
+      node: context,
+      components,
+      onEvent,
+    })
   }
 
   if (context.node) {
-    return (<C key={unique} {...context} />)
+    return (<C key={unique} {...context} components={components} onEvent={onEvent} />)
   }
 
   Object.keys(context).forEach((key) => {
@@ -23,17 +28,22 @@ function p(props, unique) {
     }
 
     if (Array.isArray(current)) {
-      context[key] = current.map((item, i) => p(item, i))
+      context[key] = current.map((item, i) => p({ ...item, components, onEvent }, i))
       return
     }
 
     if (current.node && current.arguments) {
-      context[key] = func({ C, node: current })
+      context[key] = func({
+        C,
+        node: current,
+        components,
+        onEvent,
+      })
       return
     }
 
     if (current.node) {
-      context[key] = (<C {...current} />)
+      context[key] = (<C {...current} components={components} onEvent={onEvent} />)
       return
     }
 

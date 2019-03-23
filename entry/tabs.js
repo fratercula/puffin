@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tabs as T } from 'antd'
+import * as antd from 'antd'
 import { C } from '../src'
+
+const T = antd.Tabs
 
 function Tabs({ props, children }) {
   const {
@@ -24,9 +26,9 @@ function Tabs({ props, children }) {
             <T.TabPane
               key={i}
               disabled={disabled}
-              tab={(<C {...tab} />)}
+              tab={(<C {...tab} components={{ ...antd }} />)}
             >
-              <C {...node} />
+              <C {...node} components={{ ...antd }} />
             </T.TabPane>
           )
         })

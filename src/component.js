@@ -3,20 +3,9 @@ import PropTypes from 'prop-types'
 import clone from './helper/clone'
 import p from './props'
 
-let components = {} // eslint-disable-line no-unused-vars
-let onEvent = () => null
-
 function C(params) {
-  const { onEvent: oE, components: cs, ...rest } = params
+  const { onEvent, components, ...rest } = params
   const { node, props, children } = clone(rest)
-
-  if (Object.prototype.toString.call(oE) === '[object Function]') {
-    onEvent = oE
-  }
-
-  if (Object.prototype.toString.call(cs) === '[object Object]') {
-    components = cs
-  }
 
   let properties = {}
   let Node = node
@@ -50,7 +39,7 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C key={i} {...item} />
+              <C key={i} {...item} components={components} onEvent={onEvent} />
             ))
           }
         </Node>
@@ -60,7 +49,7 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C {...children} />
+          <C {...children} components={components} onEvent={onEvent} />
         </Node>
       )
     }
@@ -85,7 +74,7 @@ function C(params) {
       return (<Node {...clone(params)} />)
     }
 
-    properties = p({ ...props, onEvent })
+    properties = p({ ...props, onEvent, components })
 
     if (typeof children === 'undefined') {
       return (<Node {...properties} />)
@@ -104,7 +93,7 @@ function C(params) {
         <Node {...properties}>
           {
             children.map((item, i) => (
-              <C key={i} {...item} />
+              <C key={i} {...item} components={components} onEvent={onEvent} />
             ))
           }
         </Node>
@@ -114,7 +103,7 @@ function C(params) {
     if (typeof children === 'object') {
       return (
         <Node {...properties}>
-          <C {...children} />
+          <C {...children} components={components} onEvent={onEvent} />
         </Node>
       )
     }
@@ -134,6 +123,8 @@ C.propTypes = {
 C.defaultProps = {
   node: '',
   props: {},
+  components: {},
+  onEvent: () => null,
 }
 
 export default C

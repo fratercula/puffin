@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- refactor: props
+
 ## 0.2.3
 
 - feat: props object

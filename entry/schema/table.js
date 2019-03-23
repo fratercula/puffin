@@ -36,6 +36,15 @@ export default {
         },
       },
       {
+        title: 'List',
+        dataIndex: 'list',
+        render: {
+          arguments: ['list'],
+          node: 'div',
+          children: '${JSON.stringify(list)}', // eslint-disable-line
+        },
+      },
+      {
         title: 'Age',
         dataIndex: 'age',
       },
@@ -66,6 +75,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 1',
+        list: { b: 2 },
         te: null,
       },
       {
@@ -74,6 +84,7 @@ export default {
         age: 32,
         gender: 'male',
         address: 'London Park no. 2',
+        list: [{ a: 1 }, { b: 2 }],
         te: null,
       },
       {
@@ -82,6 +93,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 3',
+        list: [{ a: 1 }, { b: 2 }],
         te: null,
       },
       {
@@ -90,6 +102,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 4',
+        list: [{ a: 1 }, { b: 2 }],
         te: null,
       },
       {
@@ -98,6 +111,7 @@ export default {
         age: 32,
         gender: 'male',
         address: 'London Park no. 5',
+        list: [{ a: 1 }, { b: 2 }],
         te: null,
       },
     ],

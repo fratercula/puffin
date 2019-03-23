@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3
+
+- feat: props object
+
 ## 0.2.2
 
 - fix: props null error

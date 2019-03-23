@@ -66,6 +66,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 1',
+        te: null,
       },
       {
         key: '1',
@@ -73,6 +74,7 @@ export default {
         age: 32,
         gender: 'male',
         address: 'London Park no. 2',
+        te: null,
       },
       {
         key: '2',
@@ -80,6 +82,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 3',
+        te: null,
       },
       {
         key: '3',
@@ -87,6 +90,7 @@ export default {
         age: 32,
         gender: 'female',
         address: 'London Park no. 4',
+        te: null,
       },
       {
         key: '4',
@@ -94,6 +98,7 @@ export default {
         age: 32,
         gender: 'male',
         address: 'London Park no. 5',
+        te: null,
       },
     ],
     bordered: false,

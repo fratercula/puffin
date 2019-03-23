@@ -18,6 +18,10 @@ function p(props, unique) {
   Object.keys(context).forEach((key) => {
     const current = context[key]
 
+    if (!current) {
+      return
+    }
+
     if (Array.isArray(current)) {
       context[key] = current.map((item, i) => p(item, i))
       return
